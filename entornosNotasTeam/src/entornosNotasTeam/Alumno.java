@@ -11,10 +11,11 @@ public class Alumno {
 		cont++;
 		idAlumno = cont;
 	}
-	public Alumno(double nota1, double nota2, double nota3, int bien1, int bien2, int mal1, int mal2) {
+	public Alumno(double nota1, double nota2, double nota3, int bien1, int bien2, int mal1, int mal2, int t1, int t2, int t3) {
 		this();
 		setExNormal(nota1, nota2, nota3);
 		setExTest(bien1, bien2, mal1, mal2);
+		setTrabajos(t1, t2, t3);
 	}
 	
 	public int getIdAlumno() {
@@ -84,6 +85,10 @@ public class Alumno {
 		trabajos[0] = t1;
 		trabajos[1] = t2;
 		trabajos[2] = t3;
+	}
+	
+	public int[] getTrabajos() {
+		return trabajos;
 	}
 	@Override
 	public String toString() {
