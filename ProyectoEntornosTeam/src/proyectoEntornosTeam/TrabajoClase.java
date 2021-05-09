@@ -10,7 +10,7 @@ public class TrabajoClase {
 
 	}
 
-	public TrabajoClase(boolean entregado, int diasRetraso) {
+	public TrabajoClase(int diasRetraso) {
 		this.diasRetraso = diasRetraso;
 
 		if (this.diasRetraso > 5) {
