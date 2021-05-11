@@ -62,7 +62,7 @@ public class ExamenTest {
 
 		double nota = (this.numAciertos * VALOR_PREGUNTA) - (this.numFallos * VALOR_FALLO);
 
-		return nota; // poner redondeo
+		return nota;
 	}
 
 	public double calcularValorTest() {

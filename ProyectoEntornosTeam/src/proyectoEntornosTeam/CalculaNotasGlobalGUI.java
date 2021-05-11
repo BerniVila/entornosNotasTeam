@@ -11,6 +11,19 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.ImageIcon;
+import java.awt.Cursor;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
+import java.awt.Font;
+import javax.swing.DropMode;
+import java.awt.Component;
 
 public class CalculaNotasGlobalGUI {
 
@@ -59,42 +72,91 @@ public class CalculaNotasGlobalGUI {
 		listaAlumnos.add(new Alumno("10", 9.5, 10, 8.9, new ExamenTest(28, 2, 0), new ExamenTest(30, 0, 0), new TrabajoClase( 0), new TrabajoClase( 0), new TrabajoClase( 0)));
 		
 		frmCalculanotas = new JFrame();
-		frmCalculanotas.setTitle("CalculaNotas");
-		frmCalculanotas.setBounds(100, 100, 578, 342);
+		frmCalculanotas.getContentPane().setBackground(Color.LIGHT_GRAY);
+		frmCalculanotas.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		frmCalculanotas.setTitle("Bienvenido/a al calculador de notas del Juan de Garay");
+		frmCalculanotas.setBounds(100, 100, 600, 530);
 		frmCalculanotas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmCalculanotas.getContentPane().setLayout(null);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[] {160, 160, 160, 160};
+		gridBagLayout.rowHeights = new int[] {170, 20, 60, 120, 120};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
+		frmCalculanotas.getContentPane().setLayout(gridBagLayout);
+		
+		JLabel lbl_HeaderPic = new JLabel("");
+		lbl_HeaderPic.setIconTextGap(0);
+		lbl_HeaderPic.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		lbl_HeaderPic.setBackground(Color.LIGHT_GRAY);
+		lbl_HeaderPic.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lbl_HeaderPic.setIcon(new ImageIcon(CalculaNotasGlobalGUI.class.getResource("/images/juandegarayLogo.jpg")));
+		GridBagConstraints gbc_lbl_HeaderPic = new GridBagConstraints();
+		gbc_lbl_HeaderPic.insets = new Insets(0, 0, 5, 0);
+		gbc_lbl_HeaderPic.gridwidth = 4;
+		gbc_lbl_HeaderPic.gridx = 0;
+		gbc_lbl_HeaderPic.gridy = 0;
+		frmCalculanotas.getContentPane().add(lbl_HeaderPic, gbc_lbl_HeaderPic);
+		
+		JLabel lblNewLabel_1 = new JLabel("Introduce tu NIA y pulsa Buscar por favor");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.fill = GridBagConstraints.VERTICAL;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridwidth = 2;
+		gbc_lblNewLabel_1.gridx = 1;
+		gbc_lblNewLabel_1.gridy = 1;
+		frmCalculanotas.getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		txtNia = new JTextField();
-		txtNia.setForeground(Color.GRAY);
-		txtNia.setText("NIA");
-		txtNia.setBounds(10, 53, 86, 20);
-		frmCalculanotas.getContentPane().add(txtNia);
+		txtNia.setBackground(Color.LIGHT_GRAY);
+		txtNia.setName("nia");
+		txtNia.setFont(new Font("Kohinoor Bangla", Font.PLAIN, 20));
+		txtNia.setOpaque(true);
+		txtNia.setBorder(new TitledBorder(null, "NIA", TitledBorder.LEFT, TitledBorder.ABOVE_TOP, null, null));
+		txtNia.setForeground(Color.BLACK);
+		GridBagConstraints gbc_txtNia = new GridBagConstraints();
+		gbc_txtNia.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtNia.insets = new Insets(0, 0, 5, 5);
+		gbc_txtNia.gridx = 1;
+		gbc_txtNia.gridy = 2;
+		frmCalculanotas.getContentPane().add(txtNia, gbc_txtNia);
 		txtNia.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(106, 52, 89, 23);
-		frmCalculanotas.getContentPane().add(btnBuscar);
+		btnBuscar.setOpaque(true);
+		btnBuscar.setBorderPainted(false);
+		btnBuscar.setBackground(new Color(102, 153, 102));
+		btnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		GridBagConstraints gbc_btnBuscar = new GridBagConstraints();
+		gbc_btnBuscar.fill = GridBagConstraints.BOTH;
+		gbc_btnBuscar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBuscar.gridx = 2;
+		gbc_btnBuscar.gridy = 2;
+		frmCalculanotas.getContentPane().add(btnBuscar, gbc_btnBuscar);
+		
+		
 		
 		JEditorPane txtAreaNotas = new JEditorPane();
-		txtAreaNotas.setBounds(10, 84, 542, 208);
-		frmCalculanotas.getContentPane().add(txtAreaNotas);
-		
-		JLabel lblNewLabel = new JLabel("Bienvenido/a al calculador de notas del Juan de Garay");
-		lblNewLabel.setBounds(10, 11, 279, 20);
-		frmCalculanotas.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Introduce tu NIA y pulsa Buscar por favor");
-		lblNewLabel_1.setBounds(10, 31, 279, 14);
-		frmCalculanotas.getContentPane().add(lblNewLabel_1);
-		
-		
+		txtAreaNotas.setMargin(new Insets(0, 5, 5, 0));
+		txtAreaNotas.setOpaque(false);
+		GridBagConstraints gbc_txtAreaNotas = new GridBagConstraints();
+		gbc_txtAreaNotas.ipadx = 5;
+		gbc_txtAreaNotas.gridheight = 3;
+		gbc_txtAreaNotas.anchor = GridBagConstraints.WEST;
+		gbc_txtAreaNotas.fill = GridBagConstraints.BOTH;
+		gbc_txtAreaNotas.gridwidth = 6;
+		gbc_txtAreaNotas.gridx = 0;
+		gbc_txtAreaNotas.gridy = 3;
+		frmCalculanotas.getContentPane().add(txtAreaNotas, gbc_txtAreaNotas);
 		
 		btnBuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				for (Alumno alumno: listaAlumnos) {
 					if (alumno.getNia().compareTo(txtNia.getText()) == 0) {
-						txtAreaNotas.setText("Nota Global:" + alumno.calcNotaGlobal() + "\n\n" + alumno.toString());
+						txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n\n" + alumno.toString());
+					}else {
+						txtAreaNotas.setText("NIA incorrecto, por favor introduce un identificador entre 1 y 10");
+						txtAreaNotas.setForeground(Color.RED);
 					}
 				}
 			}
