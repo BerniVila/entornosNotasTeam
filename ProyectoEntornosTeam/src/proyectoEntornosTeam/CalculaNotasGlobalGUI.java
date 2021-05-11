@@ -155,7 +155,7 @@ public class CalculaNotasGlobalGUI {
 					if (alumno.getNia().compareTo(txtNia.getText()) == 0) {
 						txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n\n" + alumno.toString());
 					}else {
-						txtAreaNotas.setText("NIA incorrecto, por favor introduce un identificador entre 1 y 10");
+						txtAreaNotas.setText("Ese NIA no existe en nuestra base de datos, prueba otra vez con un valor del 1 al 10");
 						txtAreaNotas.setForeground(Color.RED);
 					}
 				}
