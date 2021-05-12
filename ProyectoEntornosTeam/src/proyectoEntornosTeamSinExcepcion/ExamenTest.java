@@ -1,4 +1,4 @@
-package proyectoEntornosTeam;
+package proyectoEntornosTeamSinExcepcion;
 
 public class ExamenTest extends Examen{
 
@@ -11,7 +11,7 @@ public class ExamenTest extends Examen{
 	private int numFallos;
 	
 	public ExamenTest() {};
-	public ExamenTest(double porcentaje, int numAciertos, int numFallos) throws notaInvalidoExamenTestExcepcion {
+	public ExamenTest(double porcentaje, int numAciertos, int numFallos){
 		super(porcentaje);
 		setNumAciertos(numAciertos);
 		setNumFallos(numFallos);
@@ -29,28 +29,14 @@ public class ExamenTest extends Examen{
 		return numFallos;
 	}
 
-	public void setNumAciertos(int numAciertos) throws notaInvalidoExamenTestExcepcion {
-		if (ckNotaValidad()) {
+	public void setNumAciertos(int numAciertos){
 			this.numAciertos = numAciertos; 
-		}		
 	}
 
-	public void setNumFallos(int numFallos) throws notaInvalidoExamenTestExcepcion {
-		if (ckNotaValidad()) {
+	public void setNumFallos(int numFallos){
 			this.numFallos = numFallos; 
-		}
 	}
 
-	public boolean ckNotaValidad() throws notaInvalidoExamenTestExcepcion{
-		try {
-			if ((numAciertos+numFallos) <= NUM_PREGUNTAS)
-				return true;
-			else throw new notaInvalidoExamenTestExcepcion("el número de las preguntas contesdadas debe ser igual o menor que 30");
-		} catch (notaInvalidoExamenTestExcepcion e) {
-			System.out.println(e);
-			return false;
-		}
-	}
 	@Override
 	public String toString() {
 		return "ExamenTest [numPreguntas=" + NUM_PREGUNTAS + ", numAciertos=" + numAciertos + ", numFallos=" + numFallos

@@ -1,4 +1,4 @@
-package proyectoEntornosTeam;
+package proyectoEntornosTeamSinExcepcion;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ public class CalculaNotaGlobal {
 
 	public static Scanner tec = new Scanner(System.in);
 
-	public static void main(String[] args) throws SinPorcentajeExcepcion, notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion {
+	public static void main(String[] args) throws SinPorcentajeExcepcion {
 
 		Grupo daw = new Grupo();
 		daw.getListaAlumnos()

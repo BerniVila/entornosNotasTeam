@@ -1,4 +1,4 @@
-package proyectoEntornosTeam;
+package proyectoEntornosTeamSinExcepcion;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
@@ -47,19 +47,15 @@ public class CalculaNotasGlobalGUI {
 
 	/**
 	 * Create the application.
-	 * @throws notaInvalidoExamenTestExcepcion 
-	 * @throws notaInvalidoExamenClasicoExcepcion 
 	 */
-	public CalculaNotasGlobalGUI() throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion {
+	public CalculaNotasGlobalGUI() {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @throws notaInvalidoExamenTestExcepcion 
-	 * @throws notaInvalidoExamenClasicoExcepcion 
 	 */
-	private void initialize() throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion {
+	private void initialize() {
 		// Datos de los alumnos
 		Grupo daw = new Grupo();
 		daw.getListaAlumnos()
