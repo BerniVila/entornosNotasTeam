@@ -121,6 +121,7 @@ public class CalculaNotasGlobalGUI_detalles {
 		frmCalculanotas.getContentPane().setLayout(gridBagLayout);
 
 		JLabel lbl_HeaderPic = new JLabel("");
+		lbl_HeaderPic.setToolTipText("Web del I.E.S Juan de Garay");
 		lbl_HeaderPic.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_HeaderPic.setIconTextGap(0);
 		lbl_HeaderPic.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

@@ -11,11 +11,16 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
+import java.awt.Desktop;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
@@ -121,8 +126,9 @@ public class CalculaNotasGlobalGUI {
 		frmCalculanotas.getContentPane().setLayout(gridBagLayout);
 
 		JLabel lbl_HeaderPic = new JLabel("");
+		lbl_HeaderPic.setToolTipText("Web del I.E.S Juan de Garay");
 		lbl_HeaderPic.setIconTextGap(0);
-		lbl_HeaderPic.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		lbl_HeaderPic.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lbl_HeaderPic.setBackground(Color.LIGHT_GRAY);
 		lbl_HeaderPic.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lbl_HeaderPic.setIcon(new ImageIcon(CalculaNotasGlobalGUI.class.getResource("/images/juandegarayLogo.jpg")));
@@ -169,6 +175,15 @@ public class CalculaNotasGlobalGUI {
 		gbc_btnBuscar.gridx = 2;
 		gbc_btnBuscar.gridy = 2;
 		frmCalculanotas.getContentPane().add(btnBuscar, gbc_btnBuscar);
+		
+		JButton btnDetalles = new JButton("Ver detalles");
+		btnDetalles.setVisible(false);
+		GridBagConstraints gbc_btnDetalles = new GridBagConstraints();
+		gbc_btnDetalles.insets = new Insets(0, 0, 5, 5);
+		gbc_btnDetalles.gridx = 3;
+		gbc_btnDetalles.gridy = 2;
+		frmCalculanotas.getContentPane().add(btnDetalles, gbc_btnDetalles);
+		
 
 		JEditorPane txtAreaNotas = new JEditorPane();
 		txtAreaNotas.setMargin(new Insets(0, 5, 5, 0));
@@ -188,7 +203,7 @@ public class CalculaNotasGlobalGUI {
 		
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtNia.getText().isEmpty() ||Integer.valueOf(txtNia.getText()) < 1 || Integer.valueOf(txtNia.getText()) > daw.getListaAlumnos().size()) {
+				if (txtNia.getText().isEmpty() || !Character.isDigit(txtNia.getText().charAt(0)) ||Integer.valueOf(txtNia.getText()) < 1 || Integer.valueOf(txtNia.getText()) > daw.getListaAlumnos().size()) {
 					txtAreaNotas.setText("Ese NIA no existe en nuestra base de datos, prueba otra vez con un valor del 1 al 10");
 					txtAreaNotas.setForeground(Color.RED);
 
@@ -196,7 +211,9 @@ public class CalculaNotasGlobalGUI {
 					for (Alumno alumno : daw.getListaAlumnos()) {
 						if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
 							try {
-								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n\n" + alumno.toString());
+								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
+								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
+								btnDetalles.setVisible(true);
 							} catch (SinPorcentajeExcepcion e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -206,6 +223,37 @@ public class CalculaNotasGlobalGUI {
 					}
 
 				}
+			}
+		});
+		
+		btnDetalles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for (Alumno alumno : daw.getListaAlumnos()) {
+					if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
+						try {
+							txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+							txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n\n" + alumno.toString());
+						} catch (SinPorcentajeExcepcion e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						txtAreaNotas.setForeground(Color.BLACK);
+					}
+				}
+
+			}
+		});
+		
+		lbl_HeaderPic.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+			         
+			        Desktop.getDesktop().browse(new URI("http://juandegaray.es"));
+			         
+			    } catch (IOException | URISyntaxException e1) {
+			        e1.printStackTrace();
+			    }
 			}
 		});
 		
