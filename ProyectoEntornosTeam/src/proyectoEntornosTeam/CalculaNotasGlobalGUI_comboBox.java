@@ -27,7 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.Desktop;
 
-public class CalculaNotasGlobalGUI_detalles {
+public class CalculaNotasGlobalGUI_comboBox {
 
 	private JFrame frmCalculanotas;
 
@@ -38,7 +38,7 @@ public class CalculaNotasGlobalGUI_detalles {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CalculaNotasGlobalGUI_detalles window = new CalculaNotasGlobalGUI_detalles();
+					CalculaNotasGlobalGUI_comboBox window = new CalculaNotasGlobalGUI_comboBox();
 					window.frmCalculanotas.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class CalculaNotasGlobalGUI_detalles {
 	 * @throws notaInvalidoExamenTestExcepcion
 	 * @throws notaInvalidoExamenClasicoExcepcion
 	 */
-	public CalculaNotasGlobalGUI_detalles() throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion {
+	public CalculaNotasGlobalGUI_comboBox() throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion {
 		initialize();
 	}
 
@@ -128,7 +128,7 @@ public class CalculaNotasGlobalGUI_detalles {
 		lbl_HeaderPic.setBackground(Color.LIGHT_GRAY);
 		lbl_HeaderPic.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lbl_HeaderPic.setIcon(
-				new ImageIcon(CalculaNotasGlobalGUI_detalles.class.getResource("/images/juandegarayLogo.jpg")));
+				new ImageIcon(CalculaNotasGlobalGUI_comboBox.class.getResource("/images/juandegarayLogo.jpg")));
 		GridBagConstraints gbc_lbl_HeaderPic = new GridBagConstraints();
 		gbc_lbl_HeaderPic.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lbl_HeaderPic.insets = new Insets(0, 0, 5, 5);
@@ -198,40 +198,7 @@ public class CalculaNotasGlobalGUI_detalles {
 		gbc_txtAreaNotas.gridy = 3;
 		frmCalculanotas.getContentPane().add(txtAreaNotas, gbc_txtAreaNotas);
 
-//		btnBuscar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if (txtNia.getText().isEmpty() ||Integer.valueOf(txtNia.getText()) < 1 || Integer.valueOf(txtNia.getText()) > daw.getListaAlumnos().size()) {
-//					txtAreaNotas.setText("Ese NIA no existe en nuestra base de datos, prueba otra vez con un valor del 1 al 10");
-//					txtAreaNotas.setForeground(Color.RED);
-//
-//				} else {
-//					for (Alumno alumno : daw.getListaAlumnos()) {
-//						if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
-//							try {
-//								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
-//								
-//								btnDetalles.addActionListener(new ActionListener() {
-//									public void actionPerformed(ActionEvent e) {
-//										try {
-//											txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n\n" + alumno.toString());
-//										} catch (SinPorcentajeExcepcion e1) {
-//											// TODO Auto-generated catch block
-//											e1.printStackTrace();
-//										}
-//										
-//									}
-//								});
-//							} catch (SinPorcentajeExcepcion e1) {
-//								// TODO Auto-generated catch block
-//								e1.printStackTrace();
-//							}
-//							txtAreaNotas.setForeground(Color.BLACK);
-//						}
-//					}
-//
-//				}
-//			}
-//		});
+
 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

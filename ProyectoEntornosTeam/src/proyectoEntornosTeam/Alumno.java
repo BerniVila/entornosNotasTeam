@@ -112,10 +112,9 @@ public class Alumno {
 
 	@Override
 	public String toString() {
-			return "Alumno [\nnia = " + nia + ", \n1 " + examenClasico1.toString() + ", \n2 "
-					+ examenClasico2.toString() + ", \n3 " + examenClasico3.toString() + ", \ntest1 = " + examenTest1
-					+ ", \ntest2 = " + examenTest2 + ", \ntrabajo1 = " + trabajo1 + ", \ntrabajo2 = " + trabajo2
-					+ ", \ntrabajo3 = " + trabajo3 + "]";
+		return "\nnia = " + nia + "\n1 " + examenClasico1 + "\n2 " + examenClasico2 + "\n3 " + examenClasico3
+				+ "\ntest 1 = " + examenTest1 + "\ntest 2 = " + examenTest2 + "\ntrabajo 1 = " + trabajo1
+				+ "\ntrabajo 2 = " + trabajo2 + "\ntrabajo 3 = " + trabajo3;
 	}
 
 	public double calcValorExamen10(double notaExamenClasico) {
@@ -133,10 +132,10 @@ public class Alumno {
 			notaGlobal = 3.0;
 		} else {
 			notaGlobal = examenClasico1.getNota() + examenClasico2.getNota() + examenClasico3.getNota()
-						+ examenTest1.getNota() + examenTest2.getNota() - (trabajo1.getPuntosPenalizacion()
-								+ trabajo2.getPuntosPenalizacion() + trabajo3.getPuntosPenalizacion());
+					+ examenTest1.getNota() + examenTest2.getNota() - (trabajo1.getPuntosPenalizacion()
+							+ trabajo2.getPuntosPenalizacion() + trabajo3.getPuntosPenalizacion());
 		}
 
-		return (Math.round(notaGlobal * 100))/100.0;
+		return (Math.round(notaGlobal * 100)) / 100.0;
 	}
 }

@@ -44,7 +44,7 @@ public class TrabajoClase {
 
 	@Override
 	public String toString() {
-		return "TrabajoClase [entregado = " + entregado + ", diasRetraso = " + diasRetraso + ", puntosPenalizacion = "
-				+ puntosPenalizacion + "]";
+		return " entregado: " + entregado + ", dias de retraso: " + diasRetraso + ", penalizacion: "
+				+ puntosPenalizacion;
 	}
 }

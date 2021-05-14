@@ -53,8 +53,8 @@ public class ExamenTest extends Examen{
 	}
 	@Override
 	public String toString() {
-		return "ExamenTest [numPreguntas=" + NUM_PREGUNTAS + ", numAciertos=" + numAciertos + ", numFallos=" + numFallos
-				+ ", noContestadas=" + (NUM_PREGUNTAS - numAciertos - numFallos)+ "]";
+		return "preguntas: " + NUM_PREGUNTAS + ", aciertos: " + numAciertos + ", fallos: " + numFallos
+				+ ", no contestadas: " + (NUM_PREGUNTAS - numAciertos - numFallos);
 	}
 
 	public double calcularNota() {

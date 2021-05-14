@@ -34,7 +34,7 @@ public class ExamenClasico extends Examen{
 	
 	@Override
 	public String toString() {
-		return "examenClásico= " + notaExamen;
+		return "examen clásico: " + notaExamen;
 	}
 	
 }
