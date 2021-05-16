@@ -17,7 +17,7 @@ public class TrabajoClase {
 			this.entregado = false;
 		} else {
 			this.entregado = true;
-			this.puntosPenalizacion = diasRetraso / 10.0;
+			setPuntosPenalizacion();
 		}
 
 	}
@@ -31,14 +31,20 @@ public class TrabajoClase {
 	}
 
 	public double getPuntosPenalizacion() {
+		setPuntosPenalizacion();
 		return puntosPenalizacion;
 	}
 
+	private void setPuntosPenalizacion() {
+		puntosPenalizacion = diasRetraso / 10.0;
+	}
+	
 	public void setEntregado(boolean entregado) {
 		this.entregado = entregado;
 	}
 
 	public void setDiasRetraso(int diasRetraso) {
+		setPuntosPenalizacion();
 		this.diasRetraso = diasRetraso;
 	}
 
