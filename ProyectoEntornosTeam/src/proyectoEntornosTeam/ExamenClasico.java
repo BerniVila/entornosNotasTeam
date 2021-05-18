@@ -2,23 +2,23 @@ package proyectoEntornosTeam;
 
 /**
  * <h1> Clase ExamenClasico </h1>
- * Esta clase es heredado de la clase Examen, es el examen clásico del alumno
+ * Esta clase hereda de la clase Examen, es el examen clï¿½sico del alumno
  * 
- * @author Bernardo,Zupan
+ * @author Bernardo Vila, Zupan Teng
  *
  */
 public class ExamenClasico extends Examen{
 	
 	/**
 	 * Atributo notaExamen
-	 * La nota del examen clásico
+	 * Indica la nota del examen clï¿½sico
 	 */
 	private double notaExamen;
 	/**
 	 * 
-	 * @param porcentaje El porcentaje de la nota del examen en la nota global
-	 * @param nota La nota del examen clásico
-	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es valido, debe ser entre 0 y 10
+	 * @param porcentaje Indica el peso en porcentaje de la nota del examen en la nota global
+	 * @param nota La nota del examen clï¿½sico
+	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es valida, debe tener un valor entre 0 y 10
 	 */
 	public ExamenClasico(double porcentaje, double nota) throws notaInvalidoExamenClasicoExcepcion {
 		super(porcentaje);
@@ -27,9 +27,9 @@ public class ExamenClasico extends Examen{
 	
 	/**
 	 * 
-	 * @param nota La nota del examen clásico
-	 * @return Devuelve true si la nota es valido y lo asigna al atributo notaExamen y false si no es valido
-	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es valido, debe ser entre 0 y 10
+	 * @param nota La nota del examen clï¿½sico
+	 * @return Devuelve true si la nota es valida y la asigna al atributo notaExamen y false si no es valido
+	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es valida, debe tener un valor entre 0 y 10
 	 */
 	public boolean setNotaExamen(double nota) throws notaInvalidoExamenClasicoExcepcion {
 		try {
@@ -46,7 +46,7 @@ public class ExamenClasico extends Examen{
 	
 	/**
 	 * 
-	 * @return La nota de este examen
+	 * @return Fija la nota de este examen
 	 */
 	public double getNotaExamen() {
 		return notaExamen;

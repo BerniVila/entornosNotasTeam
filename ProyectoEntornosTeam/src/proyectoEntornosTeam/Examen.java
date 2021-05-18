@@ -1,9 +1,9 @@
 package proyectoEntornosTeam;
 /**
- * <h2> Clase Absracto Examen </h2>
+ * <h2> Clase Absracta Examen </h2>
  * Esta clase es la clase padre de todos los examenes
  * 
- * @author Bernardo,Zupan
+ * @author Bernardo Vila, Zupan Teng
  * 
  */
 public abstract class Examen {
@@ -31,7 +31,7 @@ public abstract class Examen {
 	/**
 	 * 
 	 * @param porcentaje El porcentaje de la nota del examen en la nota global, debe ser entre 0 y 1
-	 * @return Devuelve true si el porcentaje es valido y lo asigna al atributo porcentaje y false si no es valido
+	 * @return Devuelve true y lo asigna al atributo porcentaje si el porcentaje es valido, y devuelve false si no es valido
 	 */
 	public boolean setPorcentaje(double porcentaje) {
 		if (porcentaje > 0 & porcentaje <= 1) 
@@ -43,7 +43,7 @@ public abstract class Examen {
 	
 	/**
 	 * 
-	 * @return La nota del examen
+	 * @return Devuelve la nota del examen
 	 * @throws SinPorcentajeExcepcion El porcentaje no esta asignado
 	 */
 	public abstract double getNota() throws SinPorcentajeExcepcion;

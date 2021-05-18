@@ -2,9 +2,9 @@ package proyectoEntornosTeam;
 
 /**
  * <h1> Clase ExamenClasico </h1>
- * Esta clase es heredado de la clase Examen, es el examen clásico del alumno
+ * Esta clase hereda de la clase Examen, es el examen clï¿½sico del alumno
  * 
- * @author Bernardo,Zupan
+ * @author Bernardo Vila, Zupan Teng
  *
  */
 public class ExamenTest extends Examen{
@@ -12,7 +12,7 @@ public class ExamenTest extends Examen{
 	/**
 	 * Constante NUM_PREGUNTAS
 	 * 
-	 * El número total de las preguntas
+	 * El nï¿½mero total de preguntas del test
 	 * 
 	 */
 	private static final int NUM_PREGUNTAS = 30;
@@ -20,7 +20,7 @@ public class ExamenTest extends Examen{
 	/**
 	 * Constante VALOR_PREGUNTA
 	 * 
-	 * Valor porcentuales de cada pregunta en 10 puntos
+	 * Valor porcentual de cada pregunta sobre 10 puntos
 	 * 
 	 */
 	private static final double VALOR_PREGUNTA = 10 / (double)NUM_PREGUNTAS;
@@ -28,7 +28,7 @@ public class ExamenTest extends Examen{
 	/**
 	 * Contante VALOR_FALLO
 	 * 
-	 * Penalización porcentuales de cada fallo en 10 puntos
+	 * Penalizaciï¿½n porcentual por cada fallo sobre 10 puntos
 	 * 
 	 */
 	private static final double VALOR_FALLO = VALOR_PREGUNTA / 3.0;
@@ -36,23 +36,23 @@ public class ExamenTest extends Examen{
 	/**
 	 * Atributo numAciertos
 	 * 
-	 * El número de preguntas respondidas correcta
+	 * El nï¿½mero de preguntas respondidas correctamente
 	 */	
 	private int numAciertos;
 	
 	/**
 	 * Atributo numFallos
 	 * 
-	 * El número de preguntas respondidas incorrecta
+	 * El nï¿½mero de preguntas respondidas incorrectamente
 	 */	
 	private int numFallos;
 	
 	/**
 	 * 
 	 * @param porcentaje El porcentaje de la nota del examen en la nota global
-	 * @param numAciertos El número de preguntas respondidas correcta
-	 * @param numFallos El número de preguntas respondidas incorrecta
-	 * @throws notaInvalidoExamenTestExcepcion La nota no es valido
+	 * @param numAciertos El nï¿½mero de preguntas respondidas correctamente
+	 * @param numFallos El nï¿½mero de preguntas respondidas incorrectamente
+	 * @throws notaInvalidoExamenTestExcepcion La nota no es valida
 	 */
 	public ExamenTest(double porcentaje, int numAciertos, int numFallos) throws notaInvalidoExamenTestExcepcion {
 		super(porcentaje);
@@ -62,7 +62,7 @@ public class ExamenTest extends Examen{
 
 	/**
 	 * 
-	 * @return El número de preguntas respondidas correcta
+	 * @return El nï¿½mero de preguntas respondidas correctamente
 	 */
 	public int getNumAciertos() {
 		return numAciertos;
@@ -70,7 +70,7 @@ public class ExamenTest extends Examen{
 
 	/**
 	 * 
-	 * @return El número de preguntas respondidas incorrecta
+	 * @return El nï¿½mero de preguntas respondidas incorrectamente
 	 */
 	public int getNumFallos() {
 		return numFallos;
@@ -78,8 +78,8 @@ public class ExamenTest extends Examen{
 
 	/**
 	 * 
-	 * @param numAciertos El número de preguntas respondidas correcta
-	 * @return Devuelve true si el número de preguntas aciertas es valido y lo asigna al atributo numAciertos y false si no es valido
+	 * @param numAciertos El nï¿½mero de preguntas respondidas correctamente
+	 * @return Devuelve true y lo asigna al atributo numAciertos si el nï¿½mero de preguntas acertadas es valido,  y devuelve false si no es valido
 	 * @throws notaInvalidoExamenTestExcepcion
 	 */
 	public boolean setNumAciertos(int numAciertos) throws notaInvalidoExamenTestExcepcion {
@@ -92,8 +92,8 @@ public class ExamenTest extends Examen{
 
 	/**
 	 * 
-	 * @param numFallos El número de preguntas respondidas incorrecta
-	 * @return Devuelve true si el número de preguntas falladas es valido y lo asigna al atributo numFallos y false si no es valido
+	 * @param numFallos El nï¿½mero de preguntas respondidas incorrectamente
+	 * @return Devuelve true y lo asigna al atributo numFallos si el nï¿½mero de preguntas falladas es valido, y devuelve false si no es valido
 	 * @throws notaInvalidoExamenTestExcepcion
 	 */
 	public boolean setNumFallos(int numFallos) throws notaInvalidoExamenTestExcepcion {
@@ -106,8 +106,8 @@ public class ExamenTest extends Examen{
 
 	/**
 	 * 
-	 * @return Devuelve true si la cantidad de preguntas aciertas y falladas es valido y false si no es valido
-	 * @throws notaInvalidoExamenTestExcepcion La suma del número de preguntas aciertas y falladas no puede superar al número de todas las preguntas
+	 * @return Devuelve true si la cantidad de preguntas acertadas y falladas es valido y false si no es valido
+	 * @throws notaInvalidoExamenTestExcepcion La suma del nï¿½mero de preguntas acertadas y falladas no puede superar al nï¿½mero total de preguntas
 	 */
 	private boolean ckNotaValidad() throws notaInvalidoExamenTestExcepcion{
 		try {
@@ -127,7 +127,7 @@ public class ExamenTest extends Examen{
 
 	/**
 	 * 
-	 * @return Devuelve la nota de esta examen en 10 puntos
+	 * @return Devuelve la nota de este examen sobre 10 puntos
 	 */
 	public double calcularNota() {
 		double nota = (this.numAciertos * VALOR_PREGUNTA) - (this.numFallos * VALOR_FALLO);
@@ -137,7 +137,7 @@ public class ExamenTest extends Examen{
 
 	/**
 	 * 
-	 * @return Devuelve la nota de este examen en la nota global 
+	 * @return Devuelve el porcentaje de la nota de este examen en la nota global 
 	 */
 	@Override
 	public double getNota() throws SinPorcentajeExcepcion {

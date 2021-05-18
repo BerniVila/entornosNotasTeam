@@ -19,15 +19,12 @@ import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.InternationalFormatter;
-
 import java.awt.Font;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.JToggleButton;
-import javax.swing.JFormattedTextField;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -139,25 +136,6 @@ public class CalculaNotasGlobalGUI {
 		gbc_lblNewLabel_1.gridy = 1;
 		frmCalculanotas.getContentPane().add(lblTitulo, gbc_lblNewLabel_1);
 		
-		
-
-//		InternationalFormatter formatoNIA = new InternationalFormatter();
-//		formatoNIA.setMaximum(10);
-//		formatoNIA.setMinimum(1);
-//		
-//		JFormattedTextField formattedTextNIA = new JFormattedTextField(formatoNIA);
-//		formattedTextNIA.setFont(new Font("Tahoma", Font.PLAIN, 13));
-//		GridBagConstraints gbc_formattedTextField = new GridBagConstraints();
-//		gbc_formattedTextField.insets = new Insets(0, 0, 5, 5);
-//		gbc_formattedTextField.fill = GridBagConstraints.HORIZONTAL;
-//		gbc_formattedTextField.gridx = 0;
-//		gbc_formattedTextField.gridy = 2;
-//		frmCalculanotas.getContentPane().add(formattedTextNIA, gbc_formattedTextField);
-		
-			
-		
-		
-		
 
 		JTextField txtNia = new JTextField();
 		txtNia.setText("0");
@@ -208,84 +186,7 @@ public class CalculaNotasGlobalGUI {
 		gbc_txtAreaNotas.gridy = 3;
 		frmCalculanotas.getContentPane().add(txtAreaNotas, gbc_txtAreaNotas);
 		
-		
-		
-		
-		
-//		btnBuscar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if (formattedTextNIA.getFocusLostBehavior() != 1 || formattedTextNIA.getValue() == null) {
-//					txtAreaNotas.setText(
-//							"Ese NIA no existe en nuestra base de datos, prueba otra vez con un valor del 1 al 10");
-//					txtAreaNotas.setForeground(Color.RED);
-//
-//				} else {
-//					for (Alumno alumno : daw.getListaAlumnos()) {
-//						if (alumno.getNia().compareTo(formattedTextNIA.getValue().toString()) == 0) {
-//							try {
-//								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
-//								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
-//								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
-//								toggleDetalles.setVisible(true);
-//								toggleDetalles.setText("Mostrar detalles");
-//								toggleDetalles.setSelected(false);
-//							} catch (SinPorcentajeExcepcion e1) {
-//								// TODO Auto-generated catch block
-//								e1.printStackTrace();
-//							}
-//							txtAreaNotas.setForeground(Color.BLACK);
-//						}
-//					}
-//
-//				}
-//			}
-//			
-//		});
-		
-		
-		
-		
-//		toggleDetalles.addItemListener(new ItemListener() {
-//			public void itemStateChanged(ItemEvent e) {
-//				int estado = e.getStateChange();
-//				if (estado == ItemEvent.SELECTED) {
-//					for (Alumno alumno : daw.getListaAlumnos()) {
-//						if (alumno.getNia().compareTo(formattedTextNIA.getValue().toString()) == 0) {
-//							try {
-//								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 60, 5, 5));
-//								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
-//								txtAreaNotas.setText(
-//										"Nota Global: " + alumno.calcNotaGlobal() + "\n" + alumno.toString());
-//								toggleDetalles.setText("Ocultar detalles");
-//							} catch (SinPorcentajeExcepcion e1) {
-//								// TODO Auto-generated catch block
-//								e1.printStackTrace();
-//							}
-//							txtAreaNotas.setForeground(Color.BLACK);
-//						}
-//					}
-//
-//				} else {
-//					for (Alumno alumno : daw.getListaAlumnos()) {
-//						if (alumno.getNia().compareTo(formattedTextNIA.getValue().toString()) == 0) {
-//							try {
-//								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
-//								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
-//								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
-//								toggleDetalles.setText("Mostrar detalles");
-//							} catch (SinPorcentajeExcepcion e1) {
-//								// TODO Auto-generated catch block
-//								e1.printStackTrace();
-//							}
-//							txtAreaNotas.setForeground(Color.BLACK);
-//						}
-//					}
-//				}
-//			}
-//		});
-		
-		
-		
+			
 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
