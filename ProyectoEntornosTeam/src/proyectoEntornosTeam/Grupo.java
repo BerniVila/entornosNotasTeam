@@ -2,10 +2,10 @@ package proyectoEntornosTeam;
 
 import java.util.ArrayList;
 /**
- * <h1> Clase Grupo </h1>
- * Esta clase es la lista de alumnos
+ * <h2> Clase Grupo </h2>
+ * Esta clase representa una lista de alumnos
  * 
- * @author Bernardo,Zupan
+ * @author Bernardo Vila, Zupan Teng
  *
  */
 public class Grupo {
@@ -19,8 +19,8 @@ public class Grupo {
 	/**
 	 * 
 	 * @param alumno Clase alumno
-	 * @return Devuelve true si la NIA no esta repetido y añade el alumno a la lista y false si la NIA ya existe
-	 * @throws niaRepetidoExcepcion La NIA es única
+	 * @return Devuelve true si el NIA(NÃºmero Identificador del Alumno) no estÃ¡ repetido y aÃ±ade el alumno a la lista y false si el NIA ya existe
+	 * @throws niaRepetidoExcepcion El NIA es Ãºnico
 	 */
 	public boolean addAlumno(Alumno alumno) throws niaRepetidoExcepcion {
 		if (ckNiaRepetido(alumno.getNia())) 
@@ -32,8 +32,8 @@ public class Grupo {
 	/**
 	 * 
 	 * @param nia NIA del alumno
-	 * @return la nota global del alumno que contiene la NIA
-	 * @throws SinPorcentajeExcepcion El porcentaje no esta asignado
+	 * @return Devuelve la nota global del alumno para un NIA dado
+	 * @throws SinPorcentajeExcepcion El porcentaje no estÃ¡ asignado
 	 */
 	public String getNotaAlumno (String nia) throws SinPorcentajeExcepcion {
 		for (Alumno alumno : listaAlumnos) {
@@ -42,14 +42,14 @@ public class Grupo {
 						+ alumno.calcNotaGlobal());
 			}
 		}
-		return "Ese NIA no existe en nuestra base de datos";
+		return "Este NIA no existe en nuestra base de datos";
 	}
 	
 	/**
 	 * 
-	 * @param nia La NIA del alumno
-	 * @return Devuelve true si la NIA ya existe en la list y false si no existe
-	 * @throws niaRepetidoExcepcion La NIA es única
+	 * @param nia El NIA del alumno
+	 * @return Devuelve true si el NIA ya existe en el grupo y false si no existe
+	 * @throws niaRepetidoExcepcion El NIA es Ãºnico
 	 */
 	private boolean ckNiaRepetido (String nia) throws niaRepetidoExcepcion {
 		try {
@@ -66,7 +66,7 @@ public class Grupo {
 	}
 	/**
 	 * 
-	 * @return Devuelve una copia de la lista, asi no permite motificar la lista con los métodos de ArrayList
+	 * @return Devuelve una copia de la lista, asi no permite motificar la lista con los mÃ©todos de ArrayList
 	 */
 	public ArrayList<Alumno> getListaAlumnos() {
 		ArrayList<Alumno> cpListaAlumno = listaAlumnos;

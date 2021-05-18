@@ -10,19 +10,27 @@ public abstract class Examen {
 	
 	/**
 	 * Atributo porcentaje
-	 * 
 	 * Indica el peso de los mismos en la nota global de la asignatura, 
 	 * 
 	 */
 	protected double porcentaje = 0;
+	
+	/**
+	 * Constructor vacío de objetos de la clase Examen
+	 */
 	public Examen() {};
+	
+	/**
+	 * 
+	 * @param porcentaje Indica el peso en porcentaje de la nota del exámen en la nota global
+	 */
 	public Examen (double porcentaje) {
 		setPorcentaje(porcentaje);
 	}
 	
 	/**
 	 * 
-	 * @return El porcentaje de la nota del examen en la nota global
+	 * @return El porcentaje de la nota del exámen en la nota global
 	 */
 	public double getPorcentaje() {
 		return porcentaje;
@@ -30,8 +38,8 @@ public abstract class Examen {
 	
 	/**
 	 * 
-	 * @param porcentaje El porcentaje de la nota del examen en la nota global, debe ser entre 0 y 1
-	 * @return Devuelve true y lo asigna al atributo porcentaje si el porcentaje es valido, y devuelve false si no es valido
+	 * @param porcentaje El porcentaje de la nota del exámen en la nota global, debe ser entre 0 y 1
+	 * @return Devuelve true y lo asigna al atributo porcentaje si el porcentaje es válido, y devuelve false si no es válido
 	 */
 	public boolean setPorcentaje(double porcentaje) {
 		if (porcentaje > 0 & porcentaje <= 1) 
@@ -43,8 +51,8 @@ public abstract class Examen {
 	
 	/**
 	 * 
-	 * @return Devuelve la nota del examen
-	 * @throws SinPorcentajeExcepcion El porcentaje no esta asignado
+	 * @return Devuelve la nota del exámen
+	 * @throws SinPorcentajeExcepcion El porcentaje no está asignado
 	 */
 	public abstract double getNota() throws SinPorcentajeExcepcion;
 }

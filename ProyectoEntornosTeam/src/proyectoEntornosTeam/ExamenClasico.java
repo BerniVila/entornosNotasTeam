@@ -1,8 +1,8 @@
 package proyectoEntornosTeam;
 
 /**
- * <h1> Clase ExamenClasico </h1>
- * Esta clase hereda de la clase Examen, es el examen cl�sico del alumno
+ * <h2> Clase ExamenClasico </h2>
+ * Esta clase hereda de la clase Examen, es el exámen clásico del alumno
  * 
  * @author Bernardo Vila, Zupan Teng
  *
@@ -11,14 +11,14 @@ public class ExamenClasico extends Examen{
 	
 	/**
 	 * Atributo notaExamen
-	 * Indica la nota del examen cl�sico
+	 * Indica la nota del exámen clásico
 	 */
 	private double notaExamen;
 	/**
 	 * 
-	 * @param porcentaje Indica el peso en porcentaje de la nota del examen en la nota global
-	 * @param nota La nota del examen cl�sico
-	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es valida, debe tener un valor entre 0 y 10
+	 * @param porcentaje Indica el peso en porcentaje de la nota del exámen en la nota global
+	 * @param nota La nota del exámen clásico
+	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es válida, debe tener un valor entre 0 y 10
 	 */
 	public ExamenClasico(double porcentaje, double nota) throws notaInvalidoExamenClasicoExcepcion {
 		super(porcentaje);
@@ -27,9 +27,9 @@ public class ExamenClasico extends Examen{
 	
 	/**
 	 * 
-	 * @param nota La nota del examen cl�sico
-	 * @return Devuelve true si la nota es valida y la asigna al atributo notaExamen y false si no es valido
-	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es valida, debe tener un valor entre 0 y 10
+	 * @param nota La nota del exámen clásico
+	 * @return Devuelve true si la nota es válida y la asigna al atributo notaExamen y false si no es válido
+	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es válida, debe tener un valor entre 0 y 10
 	 */
 	public boolean setNotaExamen(double nota) throws notaInvalidoExamenClasicoExcepcion {
 		try {
@@ -46,7 +46,7 @@ public class ExamenClasico extends Examen{
 	
 	/**
 	 * 
-	 * @return Fija la nota de este examen
+	 * @return Fija la nota de este exámen
 	 */
 	public double getNotaExamen() {
 		return notaExamen;
@@ -54,8 +54,8 @@ public class ExamenClasico extends Examen{
 
 	/**
 	 * 
-	 * @return Devuelve la nota de este examen en la nota global 
-	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es valido, debe ser entre 0 y 10
+	 * @return Devuelve la nota de este exámen en la nota global 
+	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es válido, debe ser entre 0 y 10
 	 */
 	@Override
 	public double getNota() throws SinPorcentajeExcepcion{

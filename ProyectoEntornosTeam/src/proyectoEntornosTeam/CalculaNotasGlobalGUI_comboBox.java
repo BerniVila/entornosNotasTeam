@@ -66,7 +66,7 @@ public class CalculaNotasGlobalGUI_comboBox {
 	 * @throws niaRepetidoExcepcion 
 	 */
 	private void initialize() throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion {
-		// Datos de los alumnos
+		// Datos de los alumnos, aquí implementaríamos el acceso a una base de datos desde la clase Grupo
 		Grupo daw = new Grupo();
 		daw.addAlumno(new Alumno("1", new ExamenClasico(0.1, 10), new ExamenClasico(0.2, 10), new ExamenClasico(0.2, 10),
 						new ExamenTest(0.25, 30, 0), new ExamenTest(0.25, 30, 0), new TrabajoClase(0),
