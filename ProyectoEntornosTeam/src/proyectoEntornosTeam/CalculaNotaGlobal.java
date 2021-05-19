@@ -43,13 +43,13 @@ public class CalculaNotaGlobal {
 		boolean recargar;
 		do {
 			recargar = false;
-			System.out.println("Introduce tu NIA y pulsa Enter por favor");
+			System.out.println("Introduzca su NIA (Número de Identificación del Alumnado) y pulse Enter por favor");
 			String nia = tec.nextLine();
 			System.out.println(daw.getNotaAlumno(nia));
-			System.out.println("¿Quieres consultar con otro NIA?(s/n)");
+			System.out.println("¿Quiere consultar con otro NIA?(s/n)");
 			if (tec.next().compareTo("s") == 0) recargar = true;
 			tec.nextLine();
 		}while (recargar);
-		
+		System.out.println("Gracias por usar nuestro servicio, vuelva cuando desee para consultar otras notas");
 	}
 }

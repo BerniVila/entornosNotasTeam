@@ -19,8 +19,8 @@ public class Grupo {
 	/**
 	 * 
 	 * @param alumno Clase alumno
-	 * @return Devuelve true si la NIA no esta repetido y añade el alumno a la lista y false si la NIA ya existe
-	 * @throws niaRepetidoExcepcion La NIA es única
+	 * @return Devuelve true si la NIA no esta repetido y aï¿½ade el alumno a la lista y false si la NIA ya existe
+	 * @throws niaRepetidoExcepcion La NIA es ï¿½nica
 	 */
 	public boolean addAlumno(Alumno alumno) throws niaRepetidoExcepcion {
 		if (ckNiaRepetido(alumno.getNia())) 
@@ -42,14 +42,14 @@ public class Grupo {
 						+ alumno.calcNotaGlobal());
 			}
 		}
-		return "Ese NIA no existe en nuestra base de datos";
+		return "Ese NIA no existe en nuestra base de datos, pruebe otra vez con un valor del 1 al 10";
 	}
 	
 	/**
 	 * 
 	 * @param nia La NIA del alumno
 	 * @return Devuelve true si la NIA ya existe en la list y false si no existe
-	 * @throws niaRepetidoExcepcion La NIA es única
+	 * @throws niaRepetidoExcepcion La NIA es ï¿½nica
 	 */
 	private boolean ckNiaRepetido (String nia) throws niaRepetidoExcepcion {
 		try {
@@ -66,7 +66,7 @@ public class Grupo {
 	}
 	/**
 	 * 
-	 * @return Devuelve una copia de la lista, asi no permite motificar la lista con los métodos de ArrayList
+	 * @return Devuelve una copia de la lista, asi no permite motificar la lista con los mï¿½todos de ArrayList
 	 */
 	public ArrayList<Alumno> getListaAlumnos() {
 		ArrayList<Alumno> cpListaAlumno = listaAlumnos;
