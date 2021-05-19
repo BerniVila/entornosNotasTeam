@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -15,6 +17,8 @@ import javax.swing.border.TitledBorder;
 import java.awt.Font;
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.JComboBox;
@@ -66,7 +70,7 @@ public class CalculaNotasGlobalGUI_comboBox {
 	 * @throws niaRepetidoExcepcion 
 	 */
 	private void initialize() throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion {
-		// Datos de los alumnos
+		// Datos de los alumnos, aquí implementaríamos el acceso a una base de datos desde la clase Grupo
 		Grupo daw = new Grupo();
 		daw.addAlumno(new Alumno("1", new ExamenClasico(0.1, 10), new ExamenClasico(0.2, 10), new ExamenClasico(0.2, 10),
 						new ExamenTest(0.25, 30, 0), new ExamenTest(0.25, 30, 0), new TrabajoClase(0),
@@ -167,13 +171,13 @@ public class CalculaNotasGlobalGUI_comboBox {
 		gbc_btnBuscar.gridy = 2;
 		frmCalculanotas.getContentPane().add(btnBuscar, gbc_btnBuscar);
 
-		JButton btnDetalles = new JButton("Ver detalles");
-		btnDetalles.setVisible(false);
-		GridBagConstraints gbc_btnDetalles = new GridBagConstraints();
-		gbc_btnDetalles.insets = new Insets(0, 0, 5, 5);
-		gbc_btnDetalles.gridx = 3;
-		gbc_btnDetalles.gridy = 2;
-		frmCalculanotas.getContentPane().add(btnDetalles, gbc_btnDetalles);
+		JToggleButton toggleDetalles = new JToggleButton("Mostrar Detalles");
+		GridBagConstraints gbc_toggleButton = new GridBagConstraints();
+		gbc_toggleButton.insets = new Insets(0, 0, 5, 5);
+		gbc_toggleButton.gridx = 3;
+		gbc_toggleButton.gridy = 2;
+		toggleDetalles.setVisible(false);
+		frmCalculanotas.getContentPane().add(toggleDetalles, gbc_toggleButton);
 
 		JEditorPane txtAreaNotas = new JEditorPane();
 		txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -196,9 +200,12 @@ public class CalculaNotasGlobalGUI_comboBox {
 				try {
 					Alumno alumno = daw.getListaAlumnos().get(Integer.valueOf(comboBox.getSelectedIndex()));
 
+					txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
 					txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
 					txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
-					btnDetalles.setVisible(true);
+					toggleDetalles.setVisible(true);
+					toggleDetalles.setText("Mostrar detalles");
+					toggleDetalles.setSelected(false);
 
 				} catch (SinPorcentajeExcepcion e1) {
 					// TODO Auto-generated catch block
@@ -207,19 +214,42 @@ public class CalculaNotasGlobalGUI_comboBox {
 			}
 		});
 
-		btnDetalles.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Alumno alumno = daw.getListaAlumnos().get(Integer.valueOf(comboBox.getSelectedIndex()));
-					txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
-					txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n\n" + alumno.toString());
-					// btnDetalles.setText("Ocultar detalles");
+		toggleDetalles.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				int estado = e.getStateChange();
+				if (estado == ItemEvent.SELECTED) {
+					for (Alumno alumno : daw.getListaAlumnos()) {
+						if (alumno.getNia().compareTo(String.valueOf(comboBox.getSelectedIndex())) == 0) {
+							try {
+								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 60, 5, 5));
+								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+								txtAreaNotas.setText(
+										"Nota Global: " + alumno.calcNotaGlobal() + "\n" + alumno.toString());
+								toggleDetalles.setText("Ocultar detalles");
+							} catch (SinPorcentajeExcepcion e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							txtAreaNotas.setForeground(Color.BLACK);
+						}
+					}
 
-				} catch (SinPorcentajeExcepcion e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} else {
+					for (Alumno alumno : daw.getListaAlumnos()) {
+						if (alumno.getNia().compareTo(String.valueOf(comboBox.getSelectedIndex())) == 0) {
+							try {
+								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
+								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
+								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
+								toggleDetalles.setText("Mostrar detalles");
+							} catch (SinPorcentajeExcepcion e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							txtAreaNotas.setForeground(Color.BLACK);
+						}
+					}
 				}
-
 			}
 		});
 		
