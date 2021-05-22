@@ -29,6 +29,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import javax.swing.JTabbedPane;
 
 public class PantallaInicioGUIPRUEBASLOCAS {
 
@@ -124,7 +125,8 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		lbl_HeaderPic.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lbl_HeaderPic.setBackground(Color.LIGHT_GRAY);
 		lbl_HeaderPic.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lbl_HeaderPic.setIcon(new ImageIcon(PantallaInicioGUIPRUEBASLOCAS.class.getResource("/images/juandegarayLogo.jpg")));
+		lbl_HeaderPic
+				.setIcon(new ImageIcon(PantallaInicioGUIPRUEBASLOCAS.class.getResource("/images/juandegarayLogo.jpg")));
 		GridBagConstraints gbc_lbl_HeaderPic = new GridBagConstraints();
 		gbc_lbl_HeaderPic.insets = new Insets(0, 0, 5, 0);
 		gbc_lbl_HeaderPic.gridwidth = 13;
@@ -153,83 +155,217 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		gbc_lblNewLabel_1.gridy = 1;
 		frmCalculanotas.getContentPane().add(lblTitulo, gbc_lblNewLabel_1);
 
-		JButton btnCrearGrupo = new JButton("Crear Grupo");
-		btnCrearGrupo.setOpaque(true);
-		btnCrearGrupo.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		btnCrearGrupo.setBackground(new Color(102, 153, 204));
-		GridBagConstraints gbc_btnCrearGrupo = new GridBagConstraints();
-		gbc_btnCrearGrupo.gridwidth = 3;
-		gbc_btnCrearGrupo.fill = GridBagConstraints.BOTH;
-		gbc_btnCrearGrupo.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCrearGrupo.gridx = 1;
-		gbc_btnCrearGrupo.gridy = 2;
-		frmCalculanotas.getContentPane().add(btnCrearGrupo, gbc_btnCrearGrupo);
+		
 
-		JButton btnCrearAlumno = new JButton("Agregar Alumno");
-		btnCrearAlumno.setOpaque(true);
-		btnCrearAlumno.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		btnCrearAlumno.setBackground(new Color(204, 153, 102));
-		GridBagConstraints gbc_btnCrearAlumno = new GridBagConstraints();
-		gbc_btnCrearAlumno.gridwidth = 3;
-		gbc_btnCrearAlumno.fill = GridBagConstraints.BOTH;
-		gbc_btnCrearAlumno.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCrearAlumno.gridx = 5;
-		gbc_btnCrearAlumno.gridy = 2;
-		frmCalculanotas.getContentPane().add(btnCrearAlumno, gbc_btnCrearAlumno);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBorder(null);
+		tabbedPane.setBackground(Color.WHITE);
+		GridBagConstraints gbc_tabbedPane = new GridBagConstraints();
+		gbc_tabbedPane.gridheight = 4;
+		gbc_tabbedPane.gridwidth = 13;
+		gbc_tabbedPane.insets = new Insets(0, 0, 5, 5);
+		gbc_tabbedPane.fill = GridBagConstraints.BOTH;
+		gbc_tabbedPane.gridx = 0;
+		gbc_tabbedPane.gridy = 2;
+		frmCalculanotas.getContentPane().add(tabbedPane, gbc_tabbedPane);
 
-		JButton btnBuscar = new JButton("Buscar Nota");
-		btnBuscar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		btnBuscar.setOpaque(true);
-		btnBuscar.setBackground(new Color(102, 153, 102));
-		btnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		GridBagConstraints gbc_btnBuscar = new GridBagConstraints();
-		gbc_btnBuscar.gridwidth = 3;
-		gbc_btnBuscar.fill = GridBagConstraints.BOTH;
-		gbc_btnBuscar.insets = new Insets(0, 0, 5, 0);
-		gbc_btnBuscar.gridx = 9;
-		gbc_btnBuscar.gridy = 2;
-		frmCalculanotas.getContentPane().add(btnBuscar, gbc_btnBuscar);
-		
-		//card layout content panels
+		// PANEL
+		// GRUPO///////////////////////////////////////////////////////////////////////////////////////////
 
-		JPanel panelContenido = new JPanel();
-		GridBagConstraints gbc_panelContenido = new GridBagConstraints();
-		gbc_panelContenido.gridheight = 3;
-		gbc_panelContenido.gridwidth = 13;
-		gbc_panelContenido.fill = GridBagConstraints.BOTH;
-		gbc_panelContenido.gridx = 0;
-		gbc_panelContenido.gridy = 3;
-		frmCalculanotas.getContentPane().add(panelContenido, gbc_panelContenido);
-		panelContenido.setLayout(new CardLayout(0, 0));
-		
-		JPanel panelNotas = new JPanel();
-		panelContenido.add(panelNotas, "name_4408424643184");
-		GridBagLayout gbl_panelNotas = new GridBagLayout();
-		gbl_panelNotas.columnWidths = new int[] {77, 77, 77, 77, 77, 77, 77, 77};
-		gbl_panelNotas.rowHeights = new int[] {62, 62, 62, 62, 62, 62, 62, 62};
-		gbl_panelNotas.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_panelNotas.rowWeights = new double[]{Double.MIN_VALUE};
-		panelNotas.setLayout(gbl_panelNotas);
-		
-		JPanel panelAlumno = new JPanel();
-		panelContenido.add(panelAlumno, "name_5628868293533");
-		GridBagLayout gbl_panelAlumno = new GridBagLayout();
-		gbl_panelAlumno.columnWidths = new int[]{0};
-		gbl_panelAlumno.rowHeights = new int[]{0};
-		gbl_panelAlumno.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_panelAlumno.rowWeights = new double[]{Double.MIN_VALUE};
-		panelAlumno.setLayout(gbl_panelAlumno);
-		
 		JPanel panelGrupo = new JPanel();
-		panelContenido.add(panelGrupo, "name_5636254039430");
+		panelGrupo.setBackground(Color.WHITE);
+		tabbedPane.addTab("Crear Grupo", null, panelGrupo, null);
 		GridBagLayout gbl_panelGrupo = new GridBagLayout();
-		gbl_panelGrupo.columnWidths = new int[]{0};
-		gbl_panelGrupo.rowHeights = new int[]{0};
-		gbl_panelGrupo.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_panelGrupo.rowWeights = new double[]{Double.MIN_VALUE};
+		gbl_panelGrupo.columnWidths = new int[] { 70, 77, 77, 77, 77, 77, 77, 70 };
+		gbl_panelGrupo.rowHeights = new int[] { 62, 62, 62, 62, 62, 62, 62, 62 };
+		gbl_panelGrupo.columnWeights = new double[] { 1.0 };
+		gbl_panelGrupo.rowWeights = new double[] { Double.MIN_VALUE };
 		panelGrupo.setLayout(gbl_panelGrupo);
-		
-		
+
+		JTextField textNombreGrupo = new JTextField();
+		GridBagConstraints gbc_textNombreGrupo = new GridBagConstraints();
+		gbc_textNombreGrupo.gridwidth = 3;
+		gbc_textNombreGrupo.insets = new Insets(0, 0, 5, 5);
+		gbc_textNombreGrupo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textNombreGrupo.gridx = 3;
+		gbc_textNombreGrupo.gridy = 2;
+		panelGrupo.add(textNombreGrupo, gbc_textNombreGrupo);
+		textNombreGrupo.setColumns(10);
+
+		JButton btnCrearGrupo = new JButton("Crear Grupo");
+		btnCrearGrupo.setBorderPainted(false);
+		btnCrearGrupo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCrearGrupo.setOpaque(true);
+		btnCrearGrupo.setBackground(new Color(0, 153, 102));
+		GridBagConstraints gbc_btnCrearGrupo = new GridBagConstraints();
+		gbc_btnCrearGrupo.fill = GridBagConstraints.VERTICAL;
+		gbc_btnCrearGrupo.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCrearGrupo.gridx = 4;
+		gbc_btnCrearGrupo.gridy = 3;
+		panelGrupo.add(btnCrearGrupo, gbc_btnCrearGrupo);
+
+		btnCrearGrupo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (textNombreGrupo.getText().isEmpty() || !Character.isDigit(textNombreGrupo.getText().charAt(0))
+						|| Integer.valueOf(textNombreGrupo.getText()) < 1
+						|| Integer.valueOf(textNombreGrupo.getText()) > daw.getListaAlumnos().size()) {
+
+				} else {
+
+				}
+			}
+		});
+
+		// PANEL
+		// ALUMNO///////////////////////////////////////////////////////////////////////////////////////////
+
+		JPanel panelAlumno = new JPanel();
+		panelAlumno.setBackground(Color.WHITE);
+		tabbedPane.addTab("Agregar Alumno", null, panelAlumno, null);
+		GridBagLayout gbl_panelAlumno = new GridBagLayout();
+		gbl_panelAlumno.columnWidths = new int[] { 70, 77, 77, 77, 77, 77, 77, 70 };
+		gbl_panelAlumno.rowHeights = new int[] { 62, 62, 62, 62, 62, 62, 62, 62 };
+		gbl_panelAlumno.columnWeights = new double[] { Double.MIN_VALUE };
+		gbl_panelAlumno.rowWeights = new double[] { Double.MIN_VALUE };
+		panelAlumno.setLayout(gbl_panelAlumno);
+
+		// PANEL
+		// NOTAS///////////////////////////////////////////////////////////////////////////////////////////
+
+		JPanel panelNotas = new JPanel();
+		panelNotas.setBackground(Color.WHITE);
+		tabbedPane.addTab("Consultar Notas", null, panelNotas, null);
+		GridBagLayout gbl_panelNotas = new GridBagLayout();
+		gbl_panelNotas.columnWidths = new int[] { 70, 77, 77, 77, 77, 77, 77, 70 };
+		gbl_panelNotas.rowHeights = new int[] { 62, 62, 62, 62, 62, 62, 62, 62 };
+		gbl_panelNotas.columnWeights = new double[] { Double.MIN_VALUE };
+		gbl_panelNotas.rowWeights = new double[] { Double.MIN_VALUE };
+		panelNotas.setLayout(gbl_panelNotas);
+
+		JTextField txtNia = new JTextField();
+		txtNia.setText("0");
+		txtNia.setBackground(Color.WHITE);
+		txtNia.setName("nia");
+		txtNia.setFont(new Font("Kohinoor Bangla", Font.PLAIN, 20));
+		txtNia.setOpaque(true);
+		txtNia.setBorder(new TitledBorder(null, "NIA", TitledBorder.LEFT, TitledBorder.ABOVE_TOP, null, null));
+		txtNia.setForeground(Color.BLACK);
+		GridBagConstraints gbc_txtNia = new GridBagConstraints();
+		gbc_txtNia.gridwidth = 2;
+		gbc_txtNia.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtNia.insets = new Insets(0, 0, 5, 5);
+		gbc_txtNia.gridx = 2;
+		gbc_txtNia.gridy = 1;
+		panelNotas.add(txtNia, gbc_txtNia);
+		txtNia.setColumns(10);
+
+		JEditorPane txtAreaNotas = new JEditorPane();
+		txtAreaNotas.setMargin(new Insets(0, 5, 5, 0));
+		txtAreaNotas.setOpaque(false);
+		GridBagConstraints gbc_txtAreaNotas = new GridBagConstraints();
+		gbc_txtAreaNotas.insets = new Insets(0, 0, 5, 0);
+		gbc_txtAreaNotas.ipadx = 5;
+		gbc_txtAreaNotas.gridheight = 6;
+		gbc_txtAreaNotas.anchor = GridBagConstraints.WEST;
+		gbc_txtAreaNotas.fill = GridBagConstraints.BOTH;
+		gbc_txtAreaNotas.gridwidth = 6;
+		gbc_txtAreaNotas.gridx = 1;
+		gbc_txtAreaNotas.gridy = 2;
+		panelNotas.add(txtAreaNotas, gbc_txtAreaNotas);
+		gbl_panelNotas.columnWeights = new double[] {};
+		gbl_panelNotas.rowWeights = new double[] {};
+		panelNotas.setLayout(gbl_panelNotas);
+
+		JButton btnCalcularNota = new JButton("Calcular Nota");
+		btnCalcularNota.setBorderPainted(false);
+		btnCalcularNota.setOpaque(true);
+		btnCalcularNota.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCalcularNota.setBackground(new Color(51, 153, 102));
+		GridBagConstraints gbc_btnCalcularNota = new GridBagConstraints();
+		gbc_btnCalcularNota.fill = GridBagConstraints.BOTH;
+		gbc_btnCalcularNota.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCalcularNota.gridx = 4;
+		gbc_btnCalcularNota.gridy = 1;
+		panelNotas.add(btnCalcularNota, gbc_btnCalcularNota);
+
+		JToggleButton toggleDetalles = new JToggleButton("Mostrar Detalles");
+		GridBagConstraints gbc_toggleButton = new GridBagConstraints();
+		gbc_toggleButton.insets = new Insets(0, 0, 5, 5);
+		gbc_toggleButton.gridx = 6;
+		gbc_toggleButton.gridy = 1;
+		toggleDetalles.setVisible(false);
+		panelNotas.add(toggleDetalles, gbc_toggleButton);
+
+		btnCalcularNota.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (txtNia.getText().isEmpty() || !Character.isDigit(txtNia.getText().charAt(0))
+						|| Integer.valueOf(txtNia.getText()) < 1
+						|| Integer.valueOf(txtNia.getText()) > daw.getListaAlumnos().size()) {
+					txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+					txtAreaNotas.setText(
+							"Ese NIA no existe en nuestra base de datos, prueba otra vez con un valor del 1 al 10");
+					txtAreaNotas.setForeground(Color.RED);
+
+				} else {
+					for (Alumno alumno : daw.getListaAlumnos()) {
+						if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
+							try {
+								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
+								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
+								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
+								toggleDetalles.setVisible(true);
+								toggleDetalles.setText("Mostrar detalles");
+								toggleDetalles.setSelected(false);
+							} catch (SinPorcentajeExcepcion e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							txtAreaNotas.setForeground(Color.BLACK);
+						}
+					}
+
+				}
+			}
+		});
+
+		toggleDetalles.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				int estado = e.getStateChange();
+				if (estado == ItemEvent.SELECTED) {
+					for (Alumno alumno : daw.getListaAlumnos()) {
+						if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
+							try {
+								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 60, 5, 5));
+								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+								txtAreaNotas
+										.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n" + alumno.toString());
+								toggleDetalles.setText("Ocultar detalles");
+							} catch (SinPorcentajeExcepcion e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							txtAreaNotas.setForeground(Color.BLACK);
+						}
+					}
+
+				} else {
+					for (Alumno alumno : daw.getListaAlumnos()) {
+						if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
+							try {
+								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
+								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
+								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
+								toggleDetalles.setText("Mostrar detalles");
+							} catch (SinPorcentajeExcepcion e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							txtAreaNotas.setForeground(Color.BLACK);
+						}
+					}
+				}
+			}
+		});
 
 	}
 }
