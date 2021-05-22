@@ -23,8 +23,9 @@ public abstract class Examen {
 	/**
 	 * 
 	 * @param porcentaje Indica el peso en porcentaje de la nota del exámen en la nota global
+	 * @throws SinPorcentajeExcepcion 
 	 */
-	public Examen (double porcentaje) {
+	public Examen (double porcentaje) throws SinPorcentajeExcepcion {
 		setPorcentaje(porcentaje);
 	}
 	
@@ -41,12 +42,11 @@ public abstract class Examen {
 	 * @param porcentaje El porcentaje de la nota del exámen en la nota global, debe ser entre 0 y 1
 	 * @return Devuelve true y lo asigna al atributo porcentaje si el porcentaje es válido, y devuelve false si no es válido
 	 */
-	public boolean setPorcentaje(double porcentaje) {
+	public void setPorcentaje(double porcentaje) throws SinPorcentajeExcepcion{
 		if (porcentaje > 0 & porcentaje <= 1) 
 			this.porcentaje = porcentaje;
 		else
-			return false;
-		return true;
+			throw new SinPorcentajeExcepcion("Porcentaje no asignado");
 	}
 	
 	/**

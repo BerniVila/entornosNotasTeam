@@ -6,6 +6,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -57,9 +59,10 @@ public class PantallaInicioGUI {
 	 * @throws notaInvalidoExamenTestExcepcion
 	 * @throws notaInvalidoExamenClasicoExcepcion
 	 * @throws niaRepetidoExcepcion
+	 * @throws SinPorcentajeExcepcion 
 	 */
 	public PantallaInicioGUI()
-			throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion {
+			throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion, SinPorcentajeExcepcion {
 		initialize();
 	}
 
@@ -69,42 +72,47 @@ public class PantallaInicioGUI {
 	 * @throws notaInvalidoExamenTestExcepcion
 	 * @throws notaInvalidoExamenClasicoExcepcion
 	 * @throws niaRepetidoExcepcion
+	 * @throws SinPorcentajeExcepcion 
 	 */
 	private void initialize()
-			throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion {
+			throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion, SinPorcentajeExcepcion {
 		// Datos de los alumnos, aquí implementaríamos el acceso a una base de datos
 		// desde la clase Grupo
 		Grupo daw = new Grupo();
-		daw.addAlumno(new Alumno("1", new ExamenClasico(0.1, 10), new ExamenClasico(0.2, 10),
-				new ExamenClasico(0.2, 10), new ExamenTest(0.25, 30, 0), new ExamenTest(0.25, 30, 0),
-				new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)));
-		daw.addAlumno(new Alumno("2", new ExamenClasico(0.1, 5.5), new ExamenClasico(0.2, 4),
-				new ExamenClasico(0.2, 6.2), new ExamenTest(0.25, 15, 10), new ExamenTest(0.25, 20, 3),
-				new TrabajoClase(1), new TrabajoClase(0), new TrabajoClase(2)));
-		daw.addAlumno(new Alumno("3", new ExamenClasico(0.1, 7.6), new ExamenClasico(0.2, 8),
-				new ExamenClasico(0.2, 8.5), new ExamenTest(0.25, 25, 4), new ExamenTest(0.25, 26, 4),
-				new TrabajoClase(0), new TrabajoClase(1), new TrabajoClase(0)));
-		daw.addAlumno(new Alumno("4", new ExamenClasico(0.1, 4.5), new ExamenClasico(0.2, 5),
-				new ExamenClasico(0.2, 5.6), new ExamenTest(0.25, 17, 3), new ExamenTest(0.25, 12, 8),
-				new TrabajoClase(4), new TrabajoClase(1), new TrabajoClase(3)));
-		daw.addAlumno(new Alumno("5", new ExamenClasico(0.1, 9), new ExamenClasico(0.2, 8.75),
-				new ExamenClasico(0.2, 9.25), new ExamenTest(0.25, 27, 1), new ExamenTest(0.25, 29, 1),
-				new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)));
-		daw.addAlumno(new Alumno("6", new ExamenClasico(0.1, 6), new ExamenClasico(0.2, 5.5), new ExamenClasico(0.2, 5),
-				new ExamenTest(0.25, 20, 10), new ExamenTest(0.25, 19, 8), new TrabajoClase(2), new TrabajoClase(1),
-				new TrabajoClase(7)));
-		daw.addAlumno(new Alumno("7", new ExamenClasico(0.1, 8), new ExamenClasico(0.2, 7.5),
-				new ExamenClasico(0.2, 8.5), new ExamenTest(0.25, 28, 0), new ExamenTest(0.25, 26, 2),
-				new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(1)));
-		daw.addAlumno(new Alumno("8", new ExamenClasico(0.1, 7.8), new ExamenClasico(0.2, 7),
-				new ExamenClasico(0.2, 8.9), new ExamenTest(0.25, 25, 1), new ExamenTest(0.25, 27, 3),
-				new TrabajoClase(1), new TrabajoClase(1), new TrabajoClase(0)));
-		daw.addAlumno(new Alumno("9", new ExamenClasico(0.1, 2.5), new ExamenClasico(0.2, 4),
-				new ExamenClasico(0.2, 5.5), new ExamenTest(0.25, 10, 15), new ExamenTest(0.25, 20, 8),
-				new TrabajoClase(4), new TrabajoClase(2), new TrabajoClase(3)));
-		daw.addAlumno(new Alumno("10", new ExamenClasico(0.1, 9.5), new ExamenClasico(0.2, 10),
-				new ExamenClasico(0.2, 8.9), new ExamenTest(0.25, 28, 2), new ExamenTest(0.25, 30, 0),
-				new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)));
+		try {
+			daw.addAlumno(new Alumno("1", new ExamenClasico(0.1, 10), new ExamenClasico(0.2, 10), new ExamenClasico(0.2, 10),
+							new ExamenTest(0.25, 30, 0), new ExamenTest(0.25, 30, 0), new TrabajoClase(0),
+							new TrabajoClase(0), new TrabajoClase(0)));
+			daw.addAlumno(new Alumno("2", new ExamenClasico(0.1, 5.5), new ExamenClasico(0.2, 4),
+							new ExamenClasico(0.2, 6.2), new ExamenTest(0.25, 15, 10), new ExamenTest(0.25, 20, 3),
+							new TrabajoClase(1), new TrabajoClase(0), new TrabajoClase(2)));
+			daw.addAlumno(new Alumno("3", new ExamenClasico(0.1, 7.6), new ExamenClasico(0.2, 8),
+							new ExamenClasico(0.2, 8.5), new ExamenTest(0.25, 25, 4), new ExamenTest(0.25, 26, 4),
+							new TrabajoClase(0), new TrabajoClase(1), new TrabajoClase(0)));
+			daw.addAlumno(new Alumno("4", new ExamenClasico(0.1, 4.5), new ExamenClasico(0.2, 5),
+							new ExamenClasico(0.2, 5.6), new ExamenTest(0.25, 17, 3), new ExamenTest(0.25, 12, 8),
+							new TrabajoClase(4), new TrabajoClase(1), new TrabajoClase(3)));
+			daw.addAlumno(new Alumno("5", new ExamenClasico(0.1, 9), new ExamenClasico(0.2, 8.75),
+							new ExamenClasico(0.2, 9.25), new ExamenTest(0.25, 27, 1), new ExamenTest(0.25, 29, 1),
+							new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)));
+			daw.addAlumno(new Alumno("6", new ExamenClasico(0.1, 6), new ExamenClasico(0.2, 5.5), new ExamenClasico(0.2, 5),
+							new ExamenTest(0.25, 20, 10), new ExamenTest(0.25, 19, 8), new TrabajoClase(2),
+							new TrabajoClase(1), new TrabajoClase(7)));
+			daw.addAlumno(new Alumno("7", new ExamenClasico(0.1, 8), new ExamenClasico(0.2, 7.5),
+							new ExamenClasico(0.2, 8.5), new ExamenTest(0.25, 28, 0), new ExamenTest(0.25, 26, 2),
+							new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(1)));
+			daw.addAlumno(new Alumno("8", new ExamenClasico(0.1, 7.8), new ExamenClasico(0.2, 7),
+							new ExamenClasico(0.2, 8.9), new ExamenTest(0.25, 25, 1), new ExamenTest(0.25, 27, 3),
+							new TrabajoClase(1), new TrabajoClase(1), new TrabajoClase(0)));
+			daw.addAlumno(new Alumno("9", new ExamenClasico(0.1, 2.5), new ExamenClasico(0.2, 4),
+							new ExamenClasico(0.2, 5.5), new ExamenTest(0.25, 10, 15), new ExamenTest(0.25, 20, 8),
+							new TrabajoClase(4), new TrabajoClase(2), new TrabajoClase(3)));
+			daw.addAlumno(new Alumno("10", new ExamenClasico(0.1, 9.5), new ExamenClasico(0.2, 10),
+							new ExamenClasico(0.2, 8.9), new ExamenTest(0.25, 28, 2), new ExamenTest(0.25, 30, 0),
+							new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
 
 		frmCalculanotas = new JFrame();
 		frmCalculanotas.getContentPane().setBackground(Color.WHITE);

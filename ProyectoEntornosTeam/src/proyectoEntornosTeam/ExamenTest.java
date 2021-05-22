@@ -53,11 +53,16 @@ public class ExamenTest extends Examen{
 	 * @param numAciertos El número de preguntas respondidas correctamente
 	 * @param numFallos El número de preguntas respondidas incorrectamente
 	 * @throws notaInvalidoExamenTestExcepcion La nota no es válida
+	 * @throws SinPorcentajeExcepcion 
 	 */
-	public ExamenTest(double porcentaje, int numAciertos, int numFallos) throws notaInvalidoExamenTestExcepcion {
+	public ExamenTest(double porcentaje, int numAciertos, int numFallos) throws notaInvalidoExamenTestExcepcion, SinPorcentajeExcepcion {
 		super(porcentaje);
-		setNumAciertos(numAciertos);
-		setNumFallos(numFallos);
+		try {
+			setNumAciertos(numAciertos);
+			setNumFallos(numFallos);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	/**
@@ -82,12 +87,13 @@ public class ExamenTest extends Examen{
 	 * @return Devuelve true y lo asigna al atributo numAciertos si el número de preguntas acertadas es válido,  y devuelve false si no es válido
 	 * @throws notaInvalidoExamenTestExcepcion Nota no válida
 	 */
-	public boolean setNumAciertos(int numAciertos) throws notaInvalidoExamenTestExcepcion {
-		if (ckNotaValidad()) {
+	public void setNumAciertos(int numAciertos) throws notaInvalidoExamenTestExcepcion{
+		try {
+			ckNotaValidad(numAciertos, numFallos);
 			this.numAciertos = numAciertos; 
-			return true;
-		}		
-		return false;
+		} catch (notaInvalidoExamenTestExcepcion e) {
+			throw e;
+		}
 	}
 
 	/**
@@ -96,12 +102,13 @@ public class ExamenTest extends Examen{
 	 * @return Devuelve true y lo asigna al atributo numFallos si el número de preguntas falladas es válido, y devuelve false si no es válido
 	 * @throws notaInvalidoExamenTestExcepcion Nota no válida
 	 */
-	public boolean setNumFallos(int numFallos) throws notaInvalidoExamenTestExcepcion {
-		if (ckNotaValidad()) {
+	public void setNumFallos(int numFallos) throws notaInvalidoExamenTestExcepcion {
+		try {
+			ckNotaValidad(numAciertos, numFallos);
 			this.numFallos = numFallos; 
-			return true;
+		} catch (notaInvalidoExamenTestExcepcion e) {
+			throw e;
 		}
-		return false;
 	}
 
 	/**
@@ -109,15 +116,9 @@ public class ExamenTest extends Examen{
 	 * @return Devuelve true si la cantidad de preguntas acertadas y falladas es válida y false si no es válido
 	 * @throws notaInvalidoExamenTestExcepcion La suma del número de preguntas acertadas y falladas no puede superar al número total de preguntas
 	 */
-	private boolean ckNotaValidad() throws notaInvalidoExamenTestExcepcion{
-		try {
-			if ((numAciertos+numFallos) <= NUM_PREGUNTAS)
-				return true;
-			else throw new notaInvalidoExamenTestExcepcion("El número de las preguntas contestadas debe ser igual o menor que " + NUM_PREGUNTAS);
-		} catch (notaInvalidoExamenTestExcepcion e) {
-			System.out.println(e);
-			return false;
-		}
+	private void ckNotaValidad(int numAciertos, int numFallos) throws notaInvalidoExamenTestExcepcion{
+		if (!((numAciertos+numFallos) <= NUM_PREGUNTAS))
+			throw new notaInvalidoExamenTestExcepcion("El número de las preguntas contestadas debe ser igual o menor que " + NUM_PREGUNTAS);
 	}
 	@Override
 	public String toString() {
@@ -145,8 +146,7 @@ public class ExamenTest extends Examen{
 			if (porcentaje == 0) throw new SinPorcentajeExcepcion("Porcentaje no asignado");
 			else return calcularNota()*porcentaje;
 		} catch (SinPorcentajeExcepcion e) {
-			System.out.println(e);
-			return 0;
+			throw e;
 		}
 	}
 }

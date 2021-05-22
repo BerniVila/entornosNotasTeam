@@ -19,10 +19,15 @@ public class ExamenClasico extends Examen{
 	 * @param porcentaje Indica el peso en porcentaje de la nota del exámen en la nota global
 	 * @param nota La nota del exámen clásico
 	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es válida, debe tener un valor entre 0 y 10
+	 * @throws SinPorcentajeExcepcion 
 	 */
-	public ExamenClasico(double porcentaje, double nota) throws notaInvalidoExamenClasicoExcepcion {
+	public ExamenClasico(double porcentaje, double nota) throws notaInvalidoExamenClasicoExcepcion, SinPorcentajeExcepcion {
 		super(porcentaje);
-		setNotaExamen(nota);
+		try {
+			setNotaExamen(nota);
+		} catch (notaInvalidoExamenClasicoExcepcion e) {
+			throw e;
+		}
 	}
 	
 	/**
@@ -37,9 +42,8 @@ public class ExamenClasico extends Examen{
 				this.notaExamen = nota;
 			else throw new notaInvalidoExamenClasicoExcepcion("La nota debe ser entre 0 y 10");
 			return true;
-		} catch (Exception e) {
-			System.out.println(e);
-			return false;
+		} catch (notaInvalidoExamenClasicoExcepcion e) {
+			throw e;
 		}
 		
 	}
@@ -63,8 +67,7 @@ public class ExamenClasico extends Examen{
 			if (porcentaje != 0) return notaExamen*porcentaje;
 			else throw new SinPorcentajeExcepcion("Porcentaje no asignado");
 		} catch (SinPorcentajeExcepcion e) {
-			System.out.println(e);
-			return 0;
+			throw e;
 		}
 		
 	}
