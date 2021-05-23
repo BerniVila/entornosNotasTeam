@@ -226,7 +226,8 @@ public class CalculaNotasGlobalGUI_comboBox {
 				int estado = e.getStateChange();
 				if (estado == ItemEvent.SELECTED) {
 					for (Alumno alumno : daw.getListaAlumnos()) {
-						if (alumno.getNia().compareTo(String.valueOf(comboBox.getSelectedIndex())) == 0) {
+						String i = Integer.parseInt(alumno.getNia())-1 + "";
+						if (i.compareTo(String.valueOf(comboBox.getSelectedIndex())) == 0) {
 							try {
 								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 60, 5, 5));
 								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -243,7 +244,8 @@ public class CalculaNotasGlobalGUI_comboBox {
 
 				} else {
 					for (Alumno alumno : daw.getListaAlumnos()) {
-						if (alumno.getNia().compareTo(String.valueOf(comboBox.getSelectedIndex())) == 0) {
+						String i = Integer.parseInt(alumno.getNia())-1 + "";
+						if (i.compareTo(String.valueOf(comboBox.getSelectedIndex())) == 0) {
 							try {
 								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
 								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
