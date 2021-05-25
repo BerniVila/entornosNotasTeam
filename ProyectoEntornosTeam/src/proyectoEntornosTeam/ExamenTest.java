@@ -52,11 +52,13 @@ public class ExamenTest extends Examen{
 	 * @param porcentaje El porcentaje de la nota del exámen en la nota global
 	 * @param numAciertos El número de preguntas respondidas correctamente
 	 * @param numFallos El número de preguntas respondidas incorrectamente
+	 * @param descrpcion La decripcion sobre este examen
 	 * @throws notaInvalidoExamenTestExcepcion La nota no es válida
 	 * @throws SinPorcentajeExcepcion 
 	 */
-	public ExamenTest(double porcentaje, int numAciertos, int numFallos) throws notaInvalidoExamenTestExcepcion, SinPorcentajeExcepcion {
+	public ExamenTest(double porcentaje, int numAciertos, int numFallos, String descrpcion) throws notaInvalidoExamenTestExcepcion, SinPorcentajeExcepcion {
 		super(porcentaje);
+		setDescripcion(descrpcion);
 		try {
 			setNumAciertos(numAciertos);
 			setNumFallos(numFallos);
@@ -122,8 +124,7 @@ public class ExamenTest extends Examen{
 	}
 	@Override
 	public String toString() {
-		return "preguntas: " + NUM_PREGUNTAS + ", aciertos: " + numAciertos + ", fallos: " + numFallos
-				+ ", no contestadas: " + (NUM_PREGUNTAS - numAciertos - numFallos);
+		return "Descripci�n: " + getDescripcion() + " Aciertos:" + numAciertos + " Fallos:" + numFallos + " Nota:" + calcularNota();
 	}
 
 	/**

@@ -21,8 +21,9 @@ public class ExamenClasico extends Examen{
 	 * @throws notaInvalidoExamenClasicoExcepcion La nota no es válida, debe tener un valor entre 0 y 10
 	 * @throws SinPorcentajeExcepcion 
 	 */
-	public ExamenClasico(double porcentaje, double nota) throws notaInvalidoExamenClasicoExcepcion, SinPorcentajeExcepcion {
+	public ExamenClasico(double porcentaje, double nota, String descripcion) throws notaInvalidoExamenClasicoExcepcion, SinPorcentajeExcepcion {
 		super(porcentaje);
+		setDescripcion(descripcion);
 		try {
 			setNotaExamen(nota);
 		} catch (notaInvalidoExamenClasicoExcepcion e) {
@@ -74,7 +75,7 @@ public class ExamenClasico extends Examen{
 	
 	@Override
 	public String toString() {
-		return "examen clásico: " + notaExamen;
+		return ("Descripci�n: " + getDescripcion() +" Nota: " + notaExamen);
 	}
 	
 }

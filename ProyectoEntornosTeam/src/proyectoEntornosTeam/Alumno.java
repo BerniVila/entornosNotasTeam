@@ -7,6 +7,8 @@ package proyectoEntornosTeam;
  *
  */
 
+import java.util.ArrayList;
+
 public class Alumno {
 
 	/**
@@ -16,86 +18,142 @@ public class Alumno {
 	private String nia;
 
 	/**
-	 * Atributo examenClasico1
-	 * Representa el primer exámen clásico
+	 * Atributo nombre
+	 * Indica el nombre del alumno
 	 */
-	private Examen examenClasico1;
+	private String nombre;
 	
 	/**
-	 * Atributo examenClasico2
-	 * Representa el segundo exámen clásico
+	 * Atributo apellido
+	 * Indica el apellido del alumno
 	 */
-	private Examen examenClasico2;
+	private String apellido;
 	
 	/**
-	 * Atributo examenClasico3
-	 * Representa el tercer exámen clásico
+	 * Atributo examenes
+	 * Es la lista de todos los examenes del alumno
 	 */
-	private Examen examenClasico3;
+	private ArrayList<Examen> examenes = new ArrayList<Examen>();
 	
 	/**
-	 * Atributo examenTest1
-	 * Representa el primer exámen de tipo test
+	 * Atributo trabajos 
+	 * Es la lista de todos los trabajos del alumno
 	 */
-	private Examen examenTest1;
+	private ArrayList<TrabajoClase> trabajos = new ArrayList<TrabajoClase>();
 	
 	/**
-	 * Atributo examenTest2
-	 * Representa el segundo exámen de tipo test
+	 * 
+	 * @param nia Indica el Número Identificador del Alumno (NIA)
+	 * @param nombre Indica el nombre del alumno
+	 * @param apellido Indica el apellido del alumno
 	 */
-	private Examen examenTest2;
+	public Alumno(String nia, String nombre, String apellido) {
+		setNia(nia);
+		setNombre(nombre);
+		setApellido(apellido);
+	}
 	
 	/**
-	 * Atributo trabajo1
-	 * Representa el primer trabajo de clase
+	 * 
+	 * @param nia Indica el Número Identificador del Alumno (NIA)
+	 * @param nombre Indica el nombre del alumno
+	 * @param apellido Indica el apellido del alumno
+	 * @param examenes Es la lista de todos los examenes del alumno
+	 * @param trabajos Es la lista de todos los trabajos del alumno
 	 */
-	private TrabajoClase trabajo1;
+	public Alumno(String nia, String nombre, String apellido, ArrayList<Examen> examenes, ArrayList<TrabajoClase> trabajos) {
+		this(nia, nombre, apellido);
+		setExamenes(examenes);
+		setTrabajos(trabajos);
+	}
 	
 	/**
-	 * Atributo trabajo2
-	 * Representa el segundo trabajo de clase
+	 * 
+	 * @return Devuelve el nombre del alumno
 	 */
-	private TrabajoClase trabajo2;
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * 
+	 * @param nombre Indica el nombre del alumno
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * 
+	 * @return Devuelve el apellido del alumno
+	 */
+	public String getApellido() {
+		return apellido;
+	}
+
+	/**
+	 * 
+	 * @param apellido Indica el apellido del alumno
+	 */
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	/**
+	 * 
+	 * @return Devuelve la lista de los examenes del alumno
+	 */
+	public ArrayList<Examen> getExamenes() {
+		return examenes;
+	}
 	
 	/**
-	 * Atributo trabajo3
-	 * Representa el tercer trabajo de clase
+	 * 
+	 * @param examenes Lista de examenes que quieres a�adir
 	 */
-	private TrabajoClase trabajo3;
+	public void addExamenes(Examen ... examenes) {
+		for (Examen e:examenes) 
+			this.examenes.add(e);
+	}
+
+	/**
+	 * 
+	 * @return Devuelve la lista de los trabajos del alumno
+	 */
+	public ArrayList<TrabajoClase> getTrabajos() {
+		return trabajos;
+	}
 	
+	/**
+	 * 
+	 * @param trabajos Lista de trabajos que quieres a�adir
+	 */
+	public void addTrabajos(TrabajoClase ... trabajos) {
+		for (TrabajoClase t:trabajos)
+			this.trabajos.add(t);
+	}
+	
+	/**
+	 * 
+	 * @param examenes Es la lista de todos los examenes del alumno
+	 */
+	public void setExamenes(ArrayList<Examen> examenes) {
+		this.examenes = examenes;
+	}
+	
+	/**
+	 * 
+	 * @param trabajos Es la lista de todos los trabajos del alumno
+	 */
+	public void setTrabajos(ArrayList<TrabajoClase> trabajos) {
+		this.trabajos = trabajos;
+	}
+
 	/**
 	 * Atributo notaGlobal
 	 * Indica la nota global del alumno
 	 */
 	private double notaGlobal;
-
-	
-	/**
-	 * Constructor que pide todos los datos necesarios: NIA, los tres exámenes clásicos, los dos exámenes de tipo test y los tres trabajos.
-	 * 
-	 * @param nia Indica el Número Identificador del Alumno (NIA)
-	 * @param examenClasico1 Representa el primer exámen clásico
-	 * @param examenClasico2 Representa el segundo exámen clásico
-     * @param examenClasico3 Representa el tercer exámen clásico
-	 * @param test1 Representa el primer exámen de tipo test
-	 * @param test2 Representa el segundo exámen de tipo test
-	 * @param trabajo1 Representa el primer trabajo de clase
-	 * @param trabajo2 Representa el segundo trabajo de clase
-	 * @param trabajo3 Representa el tercer trabajo de clase
-	 */
-	public Alumno(String nia, ExamenClasico examenClasico1, ExamenClasico examenClasico2, ExamenClasico examenClasico3,
-			ExamenTest test1, ExamenTest test2, TrabajoClase trabajo1, TrabajoClase trabajo2, TrabajoClase trabajo3) {
-
-		this.nia = nia;
-		this.examenClasico1 = examenClasico1;
-		this.examenClasico2 = examenClasico2;
-		this.examenClasico3 = examenClasico3;
-		this.examenTest1 = test1;
-		this.examenTest2 = test2;
-		this.trabajo1 = trabajo1;
-		this.trabajo2 = trabajo2;
-		this.trabajo3 = trabajo3;
-	}
 	
 	/**
 	 * 
@@ -105,109 +163,6 @@ public class Alumno {
 		return nia;
 	}
 	
-	/**
-	 * 
-	 * @return Devuelve la clase ExamenClasico que contiene datos del primer exámen clásico
-	 */
-	public Examen getExamenClasico1() {
-		return examenClasico1;
-	}
-	
-	/**
-	 * 
-	 * @param examenClasico1 Establece el primer exámen clásico
-	 */
-	public void setExamenClasico1(ExamenClasico examenClasico1) {
-		this.examenClasico1 = examenClasico1;
-	}
-
-	/**
-	 * 
-	 * @return Devuelve la clase ExamenClasico que contiene datos del segundo exámen clásico
-	 */
-	public Examen getExamenClasico2() {
-		return examenClasico2;
-	}
-
-	/**
-	 * 
-	 * @param examenClasico2 Establece el segundo exámen clásico
-	 */
-	public void setExamenClasico2(ExamenClasico examenClasico2) {
-		this.examenClasico2 = examenClasico2;
-	}
-
-	/**
-	 * 
-	 * @return Devuelve la clase ExamenClasico que contiene datos del tercer exámen clásico
-	 */
-	public Examen getExamenClasico3() {
-		return examenClasico3;
-	}
-
-	/**
-	 * 
-	 * @param examenClasico3 Establece el tercer exámen clásico
-	 */
-	public void setExamenClasico3(ExamenClasico examenClasico3) {
-		this.examenClasico3 = examenClasico3;
-	}
-
-	/**
-	 * 
-	 * @return Devuelve la clase ExamenTest que contiene datos del primer exámen de tipo test
-	 */
-	public Examen getExamenTest1() {
-		return examenTest1;
-	}
-
-	/**
-	 * 
-	 * @param examenTest1 La clase ExámenTest
-	 */
-	public void setExamenTest1(ExamenTest examenTest1) {
-		this.examenTest1 = examenTest1;
-	}
-
-	/**
-	 * 
-	 * @return Devuelve la clase ExamenTest que contiene datos del segundo exámen de tipo test
-	 */
-	public Examen getExamenTest2() {
-		return examenTest2;
-	}
-
-	/**
-	 * 
-	 * @param examenTest2 La clase ExamenTest
-	 */
-	public void setExamenTest2(ExamenTest examenTest2) {
-		this.examenTest2 = examenTest2;
-	}
-
-	/**
-	 * 
-	 * @return Devuele la clase TrabajoClase que contiene datos del primer trabajo
-	 */
-	public TrabajoClase getTrabajo1() {
-		return trabajo1;
-	}
-	
-	/**
-	 * 
-	 * @return Devuele la clase TrabajoClase que contiene datos del segundo trabajo
-	 */	
-	public TrabajoClase getTrabajo2() {
-		return trabajo2;
-	}
-	
-	/**
-	 * 
-	 * @return Devuele la clase TrabajoClase que contiene datos del tercero trabajo
-	 */	
-	public TrabajoClase getTrabajo3() {
-		return trabajo3;
-	}
 	
 	/**
 	 * 
@@ -217,51 +172,17 @@ public class Alumno {
 		this.nia = nia;
 	}
 
-	/**
-	 * 
-	 * @param test1 La clase ExamenTest
-	 */
-	public void setTest1(ExamenTest test1) {
-		this.examenTest1 = test1;
-	}
-
-	/**
-	 * 
-	 * @param test2 La clase ExamenTest
-	 */
-	public void setTest2(ExamenTest test2) {
-		this.examenTest2 = test2;
-	}
-
-	/**
-	 * 
-	 * @param trabajo1 La clase TrabajoClase
-	 */
-	public void setTrabajo1(TrabajoClase trabajo1) {
-		this.trabajo1 = trabajo1;
-	}
-
-	/**
-	 * 
-	 * @param trabajo2 La clase TrabajoClase
-	 */
-	public void setTrabajo2(TrabajoClase trabajo2) {
-		this.trabajo2 = trabajo2;
-	}
-
-	/**
-	 * 
-	 * @param trabajo3 La clase TrabajoClase
-	 */
-	public void setTrabajo3(TrabajoClase trabajo3) {
-		this.trabajo3 = trabajo3;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "\nnia = " + nia + "\n1 " + examenClasico1 + "\n2 " + examenClasico2 + "\n3 " + examenClasico3
-				+ "\ntest 1 = " + examenTest1 + "\ntest 2 = " + examenTest2 + "\ntrabajo 1 = " + trabajo1
-				+ "\ntrabajo 2 = " + trabajo2 + "\ntrabajo 3 = " + trabajo3;
+		String txt = "Nombre:" + nombre + " Apellido: " + apellido;
+		for (int i = 0; i < examenes.size(); i++) {
+			txt += "\nExamen-" + i + "  " + examenes.get(i).toString();
+		}
+		for (int i = 0; i < trabajos.size(); i++) {
+			txt += "\nTrabajo-" + i + "  " + trabajos.get(i).toString();
+		}
+		return txt;
 	}
 	
 	/**
@@ -270,16 +191,15 @@ public class Alumno {
 	 * @throws SinPorcentajeExcepcion El porcentaje no está asignado
 	 */
 	public double calcNotaGlobal() throws SinPorcentajeExcepcion {
-
-		if (this.trabajo1.isEntregado() == false || this.trabajo2.isEntregado() == false
-				|| this.trabajo3.isEntregado() == false) {
-			notaGlobal = 3.0;
-		} else {
-			notaGlobal = examenClasico1.getNota() + examenClasico2.getNota() + examenClasico3.getNota()
-					+ examenTest1.getNota() + examenTest2.getNota() - (trabajo1.getPuntosPenalizacion()
-							+ trabajo2.getPuntosPenalizacion() + trabajo3.getPuntosPenalizacion());
+		double notaGlobal = 0;
+		for (int i = 0; i < examenes.size(); i++) {
+			notaGlobal += examenes.get(i).getNota();
 		}
-
+		for (int i = 0; i < trabajos.size(); i++) {
+			notaGlobal -= trabajos.get(i).getPuntosPenalizacion();
+			if (!trabajos.get(i).isEntregado())
+				return 3.0;
+		}
 		return (Math.round(notaGlobal * 100)) / 100.0;
 	}
 }

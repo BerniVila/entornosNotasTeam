@@ -14,6 +14,8 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -86,36 +88,76 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		// desde la clase Grupo
 		Grupo daw = new Grupo();
 		try {
-			daw.addAlumno(new Alumno("1", new ExamenClasico(0.1, 10), new ExamenClasico(0.2, 10), new ExamenClasico(0.2, 10),
-							new ExamenTest(0.25, 30, 0), new ExamenTest(0.25, 30, 0), new TrabajoClase(0),
-							new TrabajoClase(0), new TrabajoClase(0)));
-			daw.addAlumno(new Alumno("2", new ExamenClasico(0.1, 5.5), new ExamenClasico(0.2, 4),
-							new ExamenClasico(0.2, 6.2), new ExamenTest(0.25, 15, 10), new ExamenTest(0.25, 20, 3),
-							new TrabajoClase(1), new TrabajoClase(0), new TrabajoClase(2)));
-			daw.addAlumno(new Alumno("3", new ExamenClasico(0.1, 7.6), new ExamenClasico(0.2, 8),
-							new ExamenClasico(0.2, 8.5), new ExamenTest(0.25, 25, 4), new ExamenTest(0.25, 26, 4),
-							new TrabajoClase(0), new TrabajoClase(1), new TrabajoClase(0)));
-			daw.addAlumno(new Alumno("4", new ExamenClasico(0.1, 4.5), new ExamenClasico(0.2, 5),
-							new ExamenClasico(0.2, 5.6), new ExamenTest(0.25, 17, 3), new ExamenTest(0.25, 12, 8),
-							new TrabajoClase(4), new TrabajoClase(1), new TrabajoClase(3)));
-			daw.addAlumno(new Alumno("5", new ExamenClasico(0.1, 9), new ExamenClasico(0.2, 8.75),
-							new ExamenClasico(0.2, 9.25), new ExamenTest(0.25, 27, 1), new ExamenTest(0.25, 29, 1),
-							new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)));
-			daw.addAlumno(new Alumno("6", new ExamenClasico(0.1, 6), new ExamenClasico(0.2, 5.5), new ExamenClasico(0.2, 5),
-							new ExamenTest(0.25, 20, 10), new ExamenTest(0.25, 19, 8), new TrabajoClase(2),
-							new TrabajoClase(1), new TrabajoClase(7)));
-			daw.addAlumno(new Alumno("7", new ExamenClasico(0.1, 8), new ExamenClasico(0.2, 7.5),
-							new ExamenClasico(0.2, 8.5), new ExamenTest(0.25, 28, 0), new ExamenTest(0.25, 26, 2),
-							new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(1)));
-			daw.addAlumno(new Alumno("8", new ExamenClasico(0.1, 7.8), new ExamenClasico(0.2, 7),
-							new ExamenClasico(0.2, 8.9), new ExamenTest(0.25, 25, 1), new ExamenTest(0.25, 27, 3),
-							new TrabajoClase(1), new TrabajoClase(1), new TrabajoClase(0)));
-			daw.addAlumno(new Alumno("9", new ExamenClasico(0.1, 2.5), new ExamenClasico(0.2, 4),
-							new ExamenClasico(0.2, 5.5), new ExamenTest(0.25, 10, 15), new ExamenTest(0.25, 20, 8),
-							new TrabajoClase(4), new TrabajoClase(2), new TrabajoClase(3)));
-			daw.addAlumno(new Alumno("10", new ExamenClasico(0.1, 9.5), new ExamenClasico(0.2, 10),
-							new ExamenClasico(0.2, 8.9), new ExamenTest(0.25, 28, 2), new ExamenTest(0.25, 30, 0),
-							new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)));
+			daw.addAlumno(new Alumno(
+					"1", "nombre1", "apellido1", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 10,"Primer examen clasico."),new ExamenClasico(0.2, 10,"Segundo examen clasico."),new ExamenClasico(0.2, 10,"Tercer examen clasico."), new ExamenTest(0.25, 30, 0, "Primer examen test"), new ExamenTest(0.25, 30, 0,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)))
+					));
+			daw.addAlumno(new Alumno(
+					"2", "nombre2", "apellido2", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 5.5,"Primer examen clasico."), new ExamenClasico(0.2, 4,"Segundo examen clasico."),new ExamenClasico(0.2, 6.2,"Tercer examen clasico."), new ExamenTest(0.25, 15, 10, "Primer examen test"), new ExamenTest(0.25, 20, 3,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(1), new TrabajoClase(0), new TrabajoClase(2)))
+					));
+			daw.addAlumno(new Alumno(
+					"3", "nombre3", "apellido3", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 7.6,"Primer examen clasico."), new ExamenClasico(0.2, 8,"Segundo examen clasico."),new ExamenClasico(0.2, 8.5,"Tercer examen clasico."), new ExamenTest(0.25, 25, 4, "Primer examen test"), new ExamenTest(0.25, 26, 4,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(0), new TrabajoClase(1), new TrabajoClase(0)))
+					));
+			daw.addAlumno(new Alumno(
+					"4", "nombre4", "apellido4", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 4.5,"Primer examen clasico."), new ExamenClasico(0.2, 5,"Segundo examen clasico."),new ExamenClasico(0.2, 5.6,"Tercer examen clasico."), new ExamenTest(0.25, 17, 3, "Primer examen test"), new ExamenTest(0.25, 12, 8,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(4), new TrabajoClase(1), new TrabajoClase(3)))
+					));
+			daw.addAlumno(new Alumno(
+					"5", "nombre5", "apellido5", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 9,"Primer examen clasico."), new ExamenClasico(0.2, 8.75,"Segundo examen clasico."),new ExamenClasico(0.2, 9.25,"Tercer examen clasico."), new ExamenTest(0.25, 27, 1, "Primer examen test"), new ExamenTest(0.25, 29, 1,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)))
+					));
+			daw.addAlumno(new Alumno(
+					"6", "nombre6", "apellido6", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 6,"Primer examen clasico."), new ExamenClasico(0.2, 5.5,"Segundo examen clasico."),new ExamenClasico(0.2, 5,"Tercer examen clasico."), new ExamenTest(0.25, 20, 10, "Primer examen test"), new ExamenTest(0.25, 19, 8,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(2), new TrabajoClase(1), new TrabajoClase(7)))
+					));
+			daw.addAlumno(new Alumno(
+					"7", "nombre7", "apellido7", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 8,"Primer examen clasico."), new ExamenClasico(0.2, 7.5,"Segundo examen clasico."),new ExamenClasico(0.2, 8.5,"Tercer examen clasico."), new ExamenTest(0.25, 28, 0, "Primer examen test"), new ExamenTest(0.25, 26, 2,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(1)))
+					));
+			daw.addAlumno(new Alumno(
+					"8", "nombre8", "apellido8", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 7.8,"Primer examen clasico."), new ExamenClasico(0.2, 7,"Segundo examen clasico."),new ExamenClasico(0.2, 8.9,"Tercer examen clasico."), new ExamenTest(0.25, 25, 1, "Primer examen test"), new ExamenTest(0.25, 27, 3,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(1), new TrabajoClase(1), new TrabajoClase(0)))
+					));
+			daw.addAlumno(new Alumno(
+					"9", "nombre9", "apellido9", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 2.5,"Primer examen clasico."), new ExamenClasico(0.2, 4,"Segundo examen clasico."),new ExamenClasico(0.2, 5.5,"Tercer examen clasico."), new ExamenTest(0.25, 10, 15, "Primer examen test"), new ExamenTest(0.25, 20, 8,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(4), new TrabajoClase(2), new TrabajoClase(3)))
+					));
+			daw.addAlumno(new Alumno(
+					"10", "nombre10", "apellido10", 
+					new ArrayList<Examen>(
+							Arrays.asList(new ExamenClasico(0.1, 9.5,"Primer examen clasico."), new ExamenClasico(0.2, 10,"Segundo examen clasico."),new ExamenClasico(0.2, 8.9,"Tercer examen clasico."), new ExamenTest(0.25, 28, 2, "Primer examen test"), new ExamenTest(0.25, 30, 0,"Segundo examen test"))),
+					new ArrayList<TrabajoClase>(
+							Arrays.asList(new TrabajoClase(0), new TrabajoClase(0), new TrabajoClase(0)))
+					));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 		}

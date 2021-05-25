@@ -8,6 +8,14 @@ package proyectoEntornosTeam;
  */
 public abstract class Examen {
 	
+	
+	/**
+	 * Atributo descripcion
+	 * Es la descripción sobre el examen
+	 */
+	protected String descripcion = "";
+
+
 	/**
 	 * Atributo porcentaje
 	 * Indica el peso de los mismos en la nota global de la asignatura, 
@@ -47,6 +55,22 @@ public abstract class Examen {
 			this.porcentaje = porcentaje;
 		else
 			throw new SinPorcentajeExcepcion("Porcentaje no asignado");
+	}
+	
+	/**
+	 * 
+	 * @return devuelve la decripción del examen
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	/**
+	 * 
+	 * @param descripcion Indica la descripción sobre el examen
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 	/**
