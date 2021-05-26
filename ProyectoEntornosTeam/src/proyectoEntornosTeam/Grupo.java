@@ -14,7 +14,32 @@ public class Grupo {
 	 * 
 	 * Arraylist que contiene los datos de clase Alumno
 	 */
+	private String nombreGrupo;
+	
+	
+	/**
+	 * Atributo listaAlumnos
+	 * 
+	 * Arraylist que contiene los datos de clase Alumno
+	 */
 	ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+	
+	
+	public Grupo(String nombre) {
+		this.nombreGrupo = nombre;
+	}
+	
+	
+	public String getNombreGrupo() {
+		return nombreGrupo;
+	}
+
+
+
+
+	public void setNombreGrupo(String nombreGrupo) {
+		this.nombreGrupo = nombreGrupo;
+	}
 
 	/**
 	 * 
@@ -81,9 +106,9 @@ public class Grupo {
 	 * 
 	 * <<<<<<< HEAD
 	 * 
-	 * @return Devuelve una copia de la lista, asi no permite motificar la lista con
+	 * @return Devuelve una copia de la lista, asi nos permite modificar la lista con
 	 *         los m�todos de ArrayList =======
-	 * @return Devuelve una copia de la lista, asi no permite motificar la lista con
+	 * @return Devuelve una copia de la lista, asi nos permite modificar la lista con
 	 *         los métodos de ArrayList >>>>>>> branch 'master' of
 	 *         https://github.com/BerniVila/entornosNotasTeam.git
 	 */
@@ -91,13 +116,25 @@ public class Grupo {
 		ArrayList<Alumno> cpListaAlumno = listaAlumnos;
 		return cpListaAlumno;
 	}
+	
+	
+	public Grupo crearGrupo(String nombre) {
+		return new Grupo(nombre);
+	}
+	
+	
 
 	@Override
 	public String toString() {
 		String txt = "";
 		for (Alumno alumno : listaAlumnos) {
-			txt += "/n" + alumno.toString();
+			txt += "\n" + alumno.toString();
 		}
-		return txt;
+		return nombreGrupo + "\n" + txt;
 	}
+
+
+
+
+	
 }

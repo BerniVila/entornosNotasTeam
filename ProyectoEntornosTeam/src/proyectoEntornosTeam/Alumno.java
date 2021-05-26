@@ -109,7 +109,7 @@ public class Alumno {
 	
 	/**
 	 * 
-	 * @param examenes Lista de examenes que quieres añadir
+	 * @param examenes Lista de examenes que quieres aï¿½adir
 	 */
 	public void addExamenes(Examen ... examenes) {
 		for (Examen e:examenes) 
@@ -126,7 +126,7 @@ public class Alumno {
 	
 	/**
 	 * 
-	 * @param trabajos Lista de trabajos que quieres añadir
+	 * @param trabajos Lista de trabajos que quieres aï¿½adir
 	 */
 	public void addTrabajos(TrabajoClase ... trabajos) {
 		for (TrabajoClase t:trabajos)
@@ -175,12 +175,12 @@ public class Alumno {
 	
 	@Override
 	public String toString() {
-		String txt = "Nombre:" + nombre + " Apellido: " + apellido;
+		String txt = "Nombre: " + nombre + "  Apellido: " + apellido;
 		for (int i = 0; i < examenes.size(); i++) {
-			txt += "\nExamen-" + i + "  " + examenes.get(i).toString();
+			txt += "\nExamen-" + (i+1) + "  " + examenes.get(i).toString();
 		}
 		for (int i = 0; i < trabajos.size(); i++) {
-			txt += "\nTrabajo-" + i + "  " + trabajos.get(i).toString();
+			txt += "\nTrabajo-" + (i+1) + "  " + trabajos.get(i).toString();
 		}
 		return txt;
 	}

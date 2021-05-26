@@ -75,7 +75,7 @@ public class ExamenClasico extends Examen{
 	
 	@Override
 	public String toString() {
-		return ("Descripción: " + getDescripcion() +" Nota: " + notaExamen);
+		return (getDescripcion() +" Nota: " + notaExamen);
 	}
 	
 }

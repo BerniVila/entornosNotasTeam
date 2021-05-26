@@ -11,7 +11,7 @@ public class CalculaNotaGlobal {
 	public static void main(String[] args) throws SinPorcentajeExcepcion, notaInvalidoExamenClasicoExcepcion,
 			notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion {
 
-		Grupo daw = new Grupo();
+		Grupo daw = new Grupo("DAW");
 		try {
 			daw.addAlumno(new Alumno(
 					"1", "nombre1", "apellido1", 

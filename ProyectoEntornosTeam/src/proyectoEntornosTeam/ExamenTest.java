@@ -124,7 +124,7 @@ public class ExamenTest extends Examen{
 	}
 	@Override
 	public String toString() {
-		return "Descripción: " + getDescripcion() + " Aciertos:" + numAciertos + " Fallos:" + numFallos + " Nota:" + calcularNota();
+		return getDescripcion() + " Aciertos:" + numAciertos + " Fallos:" + numFallos + " Nota:" + calcularNota();
 	}
 
 	/**
@@ -133,6 +133,7 @@ public class ExamenTest extends Examen{
 	 */
 	public double calcularNota() {
 		double nota = (this.numAciertos * VALOR_PREGUNTA) - (this.numFallos * VALOR_FALLO);
+		 nota = (Math.round(nota * 100)) / 100.0;
 		if (nota < 0) nota = 0;
 		return nota;
 	}

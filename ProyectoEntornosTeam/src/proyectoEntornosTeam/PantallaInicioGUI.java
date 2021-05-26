@@ -80,7 +80,7 @@ public class PantallaInicioGUI {
 			throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion, SinPorcentajeExcepcion {
 		// Datos de los alumnos, aquí implementaríamos el acceso a una base de datos
 		// desde la clase Grupo
-		Grupo daw = new Grupo();
+		Grupo daw = new Grupo("DAW");
 		try {
 			daw.addAlumno(new Alumno(
 					"1", "nombre1", "apellido1", 

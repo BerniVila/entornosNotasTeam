@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,12 +31,9 @@ import javax.swing.JToggleButton;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.JPanel;
-import java.awt.CardLayout;
 import javax.swing.JTabbedPane;
-import javax.swing.JSpinner;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JComboBox;
-import javax.swing.JSeparator;
 import java.awt.Dimension;
 
 public class PantallaInicioGUIPRUEBASLOCAS {
@@ -45,7 +41,7 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 	private JFrame frmCalculanotas;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
+	ArrayList<Grupo> listaGrupos = new ArrayList<Grupo>();
 
 	/**
 	 * Launch the application.
@@ -86,7 +82,8 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 			throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion {
 		// Datos de los alumnos, aquí implementaríamos el acceso a una base de datos
 		// desde la clase Grupo
-		Grupo daw = new Grupo();
+		Grupo daw = new Grupo("DAW");
+		listaGrupos.add(daw);
 		try {
 			daw.addAlumno(new Alumno(
 					"1", "nombre1", "apellido1", 
@@ -161,6 +158,8 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
+		
+		System.out.println(daw);
 
 		frmCalculanotas = new JFrame();
 		frmCalculanotas.getContentPane().setBackground(Color.WHITE);
@@ -270,17 +269,7 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		gbc_btnCrearGrupo.gridy = 3;
 		panelGrupo.add(btnCrearGrupo, gbc_btnCrearGrupo);
 
-		btnCrearGrupo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (textNombreGrupo.getText().isEmpty() || !Character.isDigit(textNombreGrupo.getText().charAt(0))
-						|| Integer.valueOf(textNombreGrupo.getText()) < 1
-						|| Integer.valueOf(textNombreGrupo.getText()) > daw.getListaAlumnos().size()) {
-
-				} else {
-
-				}
-			}
-		});
+		
 
 		// PANEL
 		// ALUMNO///////////////////////////////////////////////////////////////////////////////////////////
@@ -291,26 +280,33 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		GridBagLayout gbl_panelAlumno = new GridBagLayout();
 		gbl_panelAlumno.columnWidths = new int[] {15, 15, 38, 38, 38, 0, 0, 0, 38, 38, 38, 0, 38, 0, 0, 38, 38, 38, 0, 38, 0, 38, 0, 0, 35, 35};
 		gbl_panelAlumno.rowHeights = new int[] {15, 15, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31};
-		gbl_panelAlumno.columnWeights = new double[] { Double.MIN_VALUE, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0 };
+		gbl_panelAlumno.columnWeights = new double[] { Double.MIN_VALUE, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0 };
 		gbl_panelAlumno.rowWeights = new double[] { Double.MIN_VALUE, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 		panelAlumno.setLayout(gbl_panelAlumno);
 		
-		JSpinner spinner = new JSpinner();
-		GridBagConstraints gbc_spinner = new GridBagConstraints();
-		gbc_spinner.fill = GridBagConstraints.BOTH;
-		gbc_spinner.gridwidth = 2;
-		gbc_spinner.insets = new Insets(0, 0, 5, 5);
-		gbc_spinner.gridx = 1;
-		gbc_spinner.gridy = 3;
-		panelAlumno.add(spinner, gbc_spinner);
+		JComboBox<String> comboBoxGrupo = new JComboBox<String>();
+		comboBoxGrupo.setBorder(new TitledBorder(null, "Grupo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_comboBoxGrupo = new GridBagConstraints();
+		gbc_comboBoxGrupo.gridwidth = 6;
+		gbc_comboBoxGrupo.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxGrupo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxGrupo.gridx = 4;
+		gbc_comboBoxGrupo.gridy = 3;
+		panelAlumno.add(comboBoxGrupo, gbc_comboBoxGrupo);
+			
+		for (Grupo grupo : listaGrupos) {
+			comboBoxGrupo.addItem(grupo.getNombreGrupo());
+		}
+		
+		
 		
 		textField = new JTextField();
 		textField.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nombre", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 6;
+		gbc_textField.gridwidth = 5;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 4;
+		gbc_textField.gridx = 12;
 		gbc_textField.gridy = 3;
 		panelAlumno.add(textField, gbc_textField);
 		textField.setColumns(10);
@@ -319,23 +315,12 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		textField_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Apellido 1", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		textField_1.setColumns(10);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 5;
+		gbc_textField_1.gridwidth = 6;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 12;
+		gbc_textField_1.gridx = 19;
 		gbc_textField_1.gridy = 3;
 		panelAlumno.add(textField_1, gbc_textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setBorder(new TitledBorder(null, "Apellido 2", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		textField_2.setColumns(10);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.gridwidth = 6;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 19;
-		gbc_textField_2.gridy = 3;
-		panelAlumno.add(textField_2, gbc_textField_2);
 		
 		JComboBox comboBoxExamen1 = new JComboBox();
 		comboBoxExamen1.setBorder(new TitledBorder(null, "Examen 1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -627,9 +612,8 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 						if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
 							try {
 								txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 60, 5, 5));
-								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
-								txtAreaNotas
-										.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n" + alumno.toString());
+								txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 20));
+								txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal() + "\n" + alumno.toString());
 								toggleDetalles.setText("Ocultar detalles");
 							} catch (SinPorcentajeExcepcion e1) {
 								// TODO Auto-generated catch block
@@ -657,6 +641,32 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 				}
 			}
 		});
+		
+		
+		
+		btnCrearGrupo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+					addGrupo(textNombreGrupo.getText());
+
+					comboBoxGrupo.addItem(textNombreGrupo.getText());		
+
+					JFrame frame = new JFrame();
+					JOptionPane.showMessageDialog(frame, "Grupo creado con éxito", "Greeting", JOptionPane.INFORMATION_MESSAGE);
+					
+					textNombreGrupo.setText("");
+
+			}
+		});
+		
+		
 
 	}
+	
+	
+	public void addGrupo(String nombreGrupo) {
+		listaGrupos.add(new Grupo(nombreGrupo));
+	}
+	
+	
 }
