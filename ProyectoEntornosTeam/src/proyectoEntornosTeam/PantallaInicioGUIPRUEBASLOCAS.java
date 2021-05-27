@@ -43,6 +43,7 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	ArrayList<Grupo> listaGrupos = new ArrayList<Grupo>();
+	ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
 
 	/**
 	 * Launch the application.
@@ -160,8 +161,7 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		
-		System.out.println(daw);
-
+		
 		frmCalculanotas = new JFrame();
 		frmCalculanotas.getContentPane().setBackground(Color.WHITE);
 		frmCalculanotas.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -279,174 +279,170 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		panelAlumno.setBackground(Color.WHITE);
 		tabbedPane.addTab("Agregar Alumno", null, panelAlumno, null);
 		GridBagLayout gbl_panelAlumno = new GridBagLayout();
-		gbl_panelAlumno.columnWidths = new int[] {15, 38, 38, 38, 38, 38, 0, 0, 38, 38};
-		gbl_panelAlumno.rowHeights = new int[] {0, 31, 31, 31, 31, 31, 31, 31, 31};
-		gbl_panelAlumno.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0 };
-		gbl_panelAlumno.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0 };
+		gbl_panelAlumno.columnWidths = new int[] {30, 38, 38, 38, 38, 38, 38, 38, 38};
+		gbl_panelAlumno.rowHeights = new int[] {20, 10, 0, 10, 31, 31, 31, 31, 31, 31, 30, 31, 31, 31, 31, 31, 31};
+		gbl_panelAlumno.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0 };
+		gbl_panelAlumno.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0 };
 		panelAlumno.setLayout(gbl_panelAlumno);
 			
-//		for (Grupo grupo : listaGrupos) {
-//			comboBoxGrupo.addItem(grupo.getNombreGrupo());
-//		}
 		
 		JComboBox<String> comboBoxGrupo = new JComboBox<String>();
-		comboBoxGrupo.setBorder(new TitledBorder(null, "Grupo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		comboBoxGrupo.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Grupo", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_comboBoxGrupo = new GridBagConstraints();
 		gbc_comboBoxGrupo.gridwidth = 2;
 		gbc_comboBoxGrupo.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxGrupo.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxGrupo.gridx = 1;
+		gbc_comboBoxGrupo.gridx = 2;
 		gbc_comboBoxGrupo.gridy = 0;
 		panelAlumno.add(comboBoxGrupo, gbc_comboBoxGrupo);
 		
+		for (Grupo grupo : listaGrupos) {
+			comboBoxGrupo.addItem(grupo.getNombreGrupo());
+		}
 		
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nombre", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		textFieldNombre.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nombre", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_textFieldNombre = new GridBagConstraints();
-		gbc_textFieldNombre.gridwidth = 3;
 		gbc_textFieldNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldNombre.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldNombre.gridx = 3;
+		gbc_textFieldNombre.gridx = 5;
 		gbc_textFieldNombre.gridy = 0;
 		panelAlumno.add(textFieldNombre, gbc_textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		textFieldApellido = new JTextField();
-		textFieldApellido.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Apellido 1", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		textFieldApellido.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Apellido", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		textFieldApellido.setColumns(10);
 		GridBagConstraints gbc_textFieldApellido = new GridBagConstraints();
-		gbc_textFieldApellido.gridwidth = 2;
 		gbc_textFieldApellido.insets = new Insets(0, 0, 5, 5);
 		gbc_textFieldApellido.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldApellido.gridx = 6;
+		gbc_textFieldApellido.gridx = 7;
 		gbc_textFieldApellido.gridy = 0;
 		panelAlumno.add(textFieldApellido, gbc_textFieldApellido);
 		
-		JLabel lblNotaFinal = new JLabel("Nota Final");
-		GridBagConstraints gbc_lblNotaFinal = new GridBagConstraints();
-		gbc_lblNotaFinal.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNotaFinal.gridx = 9;
-		gbc_lblNotaFinal.gridy = 0;
-		panelAlumno.add(lblNotaFinal, gbc_lblNotaFinal);
+		JPanel panelExamen1 = new JPanel();
+		panelExamen1.setOpaque(false);
+		panelExamen1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Examen Clasico 1", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_panelExamen1 = new GridBagConstraints();
+		gbc_panelExamen1.gridheight = 2;
+		gbc_panelExamen1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelExamen1.gridwidth = 2;
+		gbc_panelExamen1.insets = new Insets(0, 0, 5, 5);
+		gbc_panelExamen1.gridx = 2;
+		gbc_panelExamen1.gridy = 2;
+		panelAlumno.add(panelExamen1, gbc_panelExamen1);
+		GridBagLayout gbl_panelExamen1 = new GridBagLayout();
+		gbl_panelExamen1.columnWidths = new int[]{38, 38, 38, 0, 0, 0, 38, 0};
+		gbl_panelExamen1.rowHeights = new int[]{31, 0};
+		gbl_panelExamen1.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelExamen1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelExamen1.setLayout(gbl_panelExamen1);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setOpaque(true);
-		separator_1.setBorder(null);
-		separator_1.setBackground(new Color(0, 0, 153));
-		GridBagConstraints gbc_separator_1 = new GridBagConstraints();
-		gbc_separator_1.fill = GridBagConstraints.BOTH;
-		gbc_separator_1.gridwidth = 10;
-		gbc_separator_1.insets = new Insets(0, 0, 5, 0);
-		gbc_separator_1.gridx = 0;
-		gbc_separator_1.gridy = 1;
-		panelAlumno.add(separator_1, gbc_separator_1);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel.gridwidth = 3;
-		gbc_panel.insets = new Insets(0, 0, 5, 5);
-		gbc_panel.gridx = 1;
-		gbc_panel.gridy = 2;
-		panelAlumno.add(panel, gbc_panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{38, 38, 38, 0, 0, 0, 38, 0};
-		gbl_panel.rowHeights = new int[]{31, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
-		
-		JComboBox comboBoxNotaExamen1 = new JComboBox();
+		JComboBox<Double> comboBoxNotaExamen1 = new JComboBox<Double>();
 		GridBagConstraints gbc_comboBoxNotaExamen1 = new GridBagConstraints();
 		gbc_comboBoxNotaExamen1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxNotaExamen1.gridwidth = 3;
 		gbc_comboBoxNotaExamen1.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxNotaExamen1.gridx = 0;
 		gbc_comboBoxNotaExamen1.gridy = 0;
-		panel.add(comboBoxNotaExamen1, gbc_comboBoxNotaExamen1);
-		comboBoxNotaExamen1.setBorder(new TitledBorder(null, "Examen 1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelExamen1.add(comboBoxNotaExamen1, gbc_comboBoxNotaExamen1);
+		comboBoxNotaExamen1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nota", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		addComboBoxNotas(comboBoxNotaExamen1);
+
 		
-		JComboBox comboBoxExamen1Percent = new JComboBox();
+		
+		JComboBox<Double> comboBoxExamen1Percent = new JComboBox<Double>();
 		GridBagConstraints gbc_comboBoxExamen1Percent = new GridBagConstraints();
 		gbc_comboBoxExamen1Percent.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxExamen1Percent.gridwidth = 3;
 		gbc_comboBoxExamen1Percent.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxExamen1Percent.gridx = 4;
 		gbc_comboBoxExamen1Percent.gridy = 0;
-		panel.add(comboBoxExamen1Percent, gbc_comboBoxExamen1Percent);
-		comboBoxExamen1Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Ex1 - %", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelExamen1.add(comboBoxExamen1Percent, gbc_comboBoxExamen1Percent);
+		comboBoxExamen1Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "%", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		addComboBoxPercent(comboBoxExamen1Percent);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel_1.gridx = 5;
-		gbc_panel_1.gridy = 2;
-		panelAlumno.add(panel_1, gbc_panel_1);
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{38, 38, 38, 0, 0, 0, 38, 0};
-		gbl_panel_1.rowHeights = new int[]{31, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel_1.setLayout(gbl_panel_1);
 		
-		JComboBox comboBoxNotaExamen1_1 = new JComboBox();
-		comboBoxNotaExamen1_1.setBorder(new TitledBorder(null, "Examen 1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_comboBoxNotaExamen1_1 = new GridBagConstraints();
-		gbc_comboBoxNotaExamen1_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxNotaExamen1_1.gridwidth = 3;
-		gbc_comboBoxNotaExamen1_1.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxNotaExamen1_1.gridx = 0;
-		gbc_comboBoxNotaExamen1_1.gridy = 0;
-		panel_1.add(comboBoxNotaExamen1_1, gbc_comboBoxNotaExamen1_1);
+		JPanel panelExamen2 = new JPanel();
+		panelExamen2.setOpaque(false);
+		panelExamen2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Examen Clasico 2", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_panelExamen2 = new GridBagConstraints();
+		gbc_panelExamen2.gridheight = 2;
+		gbc_panelExamen2.insets = new Insets(0, 0, 5, 5);
+		gbc_panelExamen2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelExamen2.gridx = 5;
+		gbc_panelExamen2.gridy = 2;
+		panelAlumno.add(panelExamen2, gbc_panelExamen2);
+		GridBagLayout gbl_panelExamen2 = new GridBagLayout();
+		gbl_panelExamen2.columnWidths = new int[]{38, 38, 38, 0, 0, 0, 38, 0};
+		gbl_panelExamen2.rowHeights = new int[]{31, 0};
+		gbl_panelExamen2.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelExamen2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelExamen2.setLayout(gbl_panelExamen2);
 		
-		JComboBox comboBoxExamen1Percent_1 = new JComboBox();
-		comboBoxExamen1Percent_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Ex1 - %", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		GridBagConstraints gbc_comboBoxExamen1Percent_1 = new GridBagConstraints();
-		gbc_comboBoxExamen1Percent_1.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxExamen1Percent_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxExamen1Percent_1.gridwidth = 3;
-		gbc_comboBoxExamen1Percent_1.gridx = 4;
-		gbc_comboBoxExamen1Percent_1.gridy = 0;
-		panel_1.add(comboBoxExamen1Percent_1, gbc_comboBoxExamen1Percent_1);
+		JComboBox<Double> comboBoxNotaExamen2 = new JComboBox<Double>();
+		comboBoxNotaExamen2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nota", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_comboBoxNotaExamen2 = new GridBagConstraints();
+		gbc_comboBoxNotaExamen2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxNotaExamen2.gridwidth = 3;
+		gbc_comboBoxNotaExamen2.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxNotaExamen2.gridx = 0;
+		gbc_comboBoxNotaExamen2.gridy = 0;
+		panelExamen2.add(comboBoxNotaExamen2, gbc_comboBoxNotaExamen2);
+		addComboBoxNotas(comboBoxNotaExamen2);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel_2.gridx = 7;
-		gbc_panel_2.gridy = 2;
-		panelAlumno.add(panel_2, gbc_panel_2);
-		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{38, 38, 38, 0, 0, 0, 38, 0};
-		gbl_panel_2.rowHeights = new int[]{31, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel_2.setLayout(gbl_panel_2);
+		JComboBox<Double> comboBoxExamen2Percent = new JComboBox<Double>();
+		comboBoxExamen2Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "%", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_comboBoxExamen2Percent = new GridBagConstraints();
+		gbc_comboBoxExamen2Percent.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxExamen2Percent.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxExamen2Percent.gridwidth = 3;
+		gbc_comboBoxExamen2Percent.gridx = 4;
+		gbc_comboBoxExamen2Percent.gridy = 0;
+		panelExamen2.add(comboBoxExamen2Percent, gbc_comboBoxExamen2Percent);
+		addComboBoxPercent(comboBoxExamen2Percent);
 		
-		JComboBox comboBoxNotaExamen1_2 = new JComboBox();
-		comboBoxNotaExamen1_2.setBorder(new TitledBorder(null, "Examen 1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_comboBoxNotaExamen1_2 = new GridBagConstraints();
-		gbc_comboBoxNotaExamen1_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxNotaExamen1_2.gridwidth = 3;
-		gbc_comboBoxNotaExamen1_2.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxNotaExamen1_2.gridx = 0;
-		gbc_comboBoxNotaExamen1_2.gridy = 0;
-		panel_2.add(comboBoxNotaExamen1_2, gbc_comboBoxNotaExamen1_2);
 		
-		JComboBox comboBoxExamen1Percent_2 = new JComboBox();
-		comboBoxExamen1Percent_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Ex1 - %", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		GridBagConstraints gbc_comboBoxExamen1Percent_2 = new GridBagConstraints();
-		gbc_comboBoxExamen1Percent_2.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxExamen1Percent_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxExamen1Percent_2.gridwidth = 3;
-		gbc_comboBoxExamen1Percent_2.gridx = 4;
-		gbc_comboBoxExamen1Percent_2.gridy = 0;
-		panel_2.add(comboBoxExamen1Percent_2, gbc_comboBoxExamen1Percent_2);
+		JPanel panelExamen3 = new JPanel();
+		panelExamen3.setOpaque(false);
+		panelExamen3.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Examen Clasico 3", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_panelExamen3 = new GridBagConstraints();
+		gbc_panelExamen3.gridheight = 2;
+		gbc_panelExamen3.insets = new Insets(0, 0, 5, 5);
+		gbc_panelExamen3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelExamen3.gridx = 7;
+		gbc_panelExamen3.gridy = 2;
+		panelAlumno.add(panelExamen3, gbc_panelExamen3);
+		GridBagLayout gbl_panelExamen3 = new GridBagLayout();
+		gbl_panelExamen3.columnWidths = new int[]{38, 38, 38, 0, 0, 0, 38, 0};
+		gbl_panelExamen3.rowHeights = new int[]{31, 0};
+		gbl_panelExamen3.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelExamen3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelExamen3.setLayout(gbl_panelExamen3);
+		
+		JComboBox<Double> comboBoxNotaExamen3 = new JComboBox<Double>();
+		comboBoxNotaExamen3.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nota", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_comboBoxNotaExamen3 = new GridBagConstraints();
+		gbc_comboBoxNotaExamen3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxNotaExamen3.gridwidth = 3;
+		gbc_comboBoxNotaExamen3.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxNotaExamen3.gridx = 0;
+		gbc_comboBoxNotaExamen3.gridy = 0;
+		panelExamen3.add(comboBoxNotaExamen3, gbc_comboBoxNotaExamen3);
+		addComboBoxNotas(comboBoxNotaExamen3);
+		
+		JComboBox<Double> comboBoxExamen3Percent = new JComboBox<Double>();
+		comboBoxExamen3Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "%", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_comboBoxExamen3Percent = new GridBagConstraints();
+		gbc_comboBoxExamen3Percent.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxExamen3Percent.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxExamen3Percent.gridwidth = 3;
+		gbc_comboBoxExamen3Percent.gridx = 4;
+		gbc_comboBoxExamen3Percent.gridy = 0;
+		panelExamen3.add(comboBoxExamen3Percent, gbc_comboBoxExamen3Percent);
+		addComboBoxPercent(comboBoxExamen3Percent);
+		
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setOpaque(true);
@@ -454,102 +450,109 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		separator_2.setBackground(new Color(0, 0, 153));
 		GridBagConstraints gbc_separator_2 = new GridBagConstraints();
 		gbc_separator_2.fill = GridBagConstraints.BOTH;
-		gbc_separator_2.gridwidth = 10;
-		gbc_separator_2.insets = new Insets(0, 0, 5, 0);
-		gbc_separator_2.gridx = 0;
-		gbc_separator_2.gridy = 3;
+		gbc_separator_2.gridwidth = 7;
+		gbc_separator_2.insets = new Insets(0, 0, 5, 5);
+		gbc_separator_2.gridx = 1;
+		gbc_separator_2.gridy = 4;
 		panelAlumno.add(separator_2, gbc_separator_2);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridwidth = 5;
-		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_3.gridx = 1;
-		gbc_panel_3.gridy = 4;
-		panelAlumno.add(panel_3, gbc_panel_3);
-		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[]{38, 38, 0, 38, 38, 38, 0};
-		gbl_panel_3.rowHeights = new int[]{31, 0};
-		gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel_3.setLayout(gbl_panel_3);
+		JPanel panelTest1 = new JPanel();
+		panelTest1.setOpaque(false);
+		panelTest1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Examen Tipo Test 1", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_panelTest1 = new GridBagConstraints();
+		gbc_panelTest1.fill = GridBagConstraints.BOTH;
+		gbc_panelTest1.gridwidth = 6;
+		gbc_panelTest1.insets = new Insets(0, 0, 5, 5);
+		gbc_panelTest1.gridx = 2;
+		gbc_panelTest1.gridy = 5;
+		panelAlumno.add(panelTest1, gbc_panelTest1);
+		GridBagLayout gbl_panelTest1 = new GridBagLayout();
+		gbl_panelTest1.columnWidths = new int[]{38, 38, 0, 38, 38, 38, 0};
+		gbl_panelTest1.rowHeights = new int[]{31, 0};
+		gbl_panelTest1.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panelTest1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelTest1.setLayout(gbl_panelTest1);
 		
-		JComboBox comboBoxTest1Preguntas = new JComboBox();
-		GridBagConstraints gbc_comboBoxTest1Preguntas = new GridBagConstraints();
-		gbc_comboBoxTest1Preguntas.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxTest1Preguntas.gridwidth = 2;
-		gbc_comboBoxTest1Preguntas.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxTest1Preguntas.gridx = 0;
-		gbc_comboBoxTest1Preguntas.gridy = 0;
-		panel_3.add(comboBoxTest1Preguntas, gbc_comboBoxTest1Preguntas);
-		comboBoxTest1Preguntas.setName("Preguntas");
-		comboBoxTest1Preguntas.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Preguntas T1", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		JComboBox<Double> comboBoxTest1Percent = new JComboBox<Double>();
+		GridBagConstraints gbc_comboBoxTest1Percent = new GridBagConstraints();
+		gbc_comboBoxTest1Percent.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxTest1Percent.gridwidth = 3;
+		gbc_comboBoxTest1Percent.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxTest1Percent.gridx = 0;
+		gbc_comboBoxTest1Percent.gridy = 0;
+		panelTest1.add(comboBoxTest1Percent, gbc_comboBoxTest1Percent);
+		comboBoxTest1Percent.setName("Preguntas");
+		comboBoxTest1Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "% Test 1", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		addComboBoxPercent(comboBoxTest1Percent);
+		
 		
 		JComboBox comboBoxTest1Aciertos = new JComboBox();
 		GridBagConstraints gbc_comboBoxTest1Aciertos = new GridBagConstraints();
-		gbc_comboBoxTest1Aciertos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxTest1Aciertos.gridwidth = 2;
+		gbc_comboBoxTest1Aciertos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxTest1Aciertos.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxTest1Aciertos.gridx = 2;
+		gbc_comboBoxTest1Aciertos.gridx = 3;
 		gbc_comboBoxTest1Aciertos.gridy = 0;
-		panel_3.add(comboBoxTest1Aciertos, gbc_comboBoxTest1Aciertos);
+		panelTest1.add(comboBoxTest1Aciertos, gbc_comboBoxTest1Aciertos);
 		comboBoxTest1Aciertos.setName("Aciertos");
-		comboBoxTest1Aciertos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Aciertos T1", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		comboBoxTest1Aciertos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Aciertos Test 1", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
 		JComboBox comboBoxTest1Fallos = new JComboBox();
 		GridBagConstraints gbc_comboBoxTest1Fallos = new GridBagConstraints();
 		gbc_comboBoxTest1Fallos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxTest1Fallos.gridx = 5;
 		gbc_comboBoxTest1Fallos.gridy = 0;
-		panel_3.add(comboBoxTest1Fallos, gbc_comboBoxTest1Fallos);
+		panelTest1.add(comboBoxTest1Fallos, gbc_comboBoxTest1Fallos);
 		comboBoxTest1Fallos.setName("Fallos");
-		comboBoxTest1Fallos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Fallos T1", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		comboBoxTest1Fallos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Fallos Test 1", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
-		gbc_panel_4.fill = GridBagConstraints.BOTH;
-		gbc_panel_4.gridwidth = 5;
-		gbc_panel_4.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_4.gridx = 1;
-		gbc_panel_4.gridy = 5;
-		panelAlumno.add(panel_4, gbc_panel_4);
-		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[]{38, 38, 0, 38, 38, 38, 0};
-		gbl_panel_4.rowHeights = new int[]{31, 0};
-		gbl_panel_4.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_4.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel_4.setLayout(gbl_panel_4);
+		JPanel panelTest2 = new JPanel();
+		panelTest2.setOpaque(false);
+		panelTest2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Examen Tipo Test 2", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_panelTest2 = new GridBagConstraints();
+		gbc_panelTest2.fill = GridBagConstraints.BOTH;
+		gbc_panelTest2.gridwidth = 6;
+		gbc_panelTest2.insets = new Insets(0, 0, 5, 5);
+		gbc_panelTest2.gridx = 2;
+		gbc_panelTest2.gridy = 7;
+		panelAlumno.add(panelTest2, gbc_panelTest2);
+		GridBagLayout gbl_panelTest2 = new GridBagLayout();
+		gbl_panelTest2.columnWidths = new int[]{38, 38, 0, 38, 38, 38, 0};
+		gbl_panelTest2.rowHeights = new int[]{31, 0};
+		gbl_panelTest2.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panelTest2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelTest2.setLayout(gbl_panelTest2);
 		
-		JComboBox comboBoxTest2Preguntas = new JComboBox();
-		GridBagConstraints gbc_comboBoxTest2Preguntas = new GridBagConstraints();
-		gbc_comboBoxTest2Preguntas.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxTest2Preguntas.gridwidth = 2;
-		gbc_comboBoxTest2Preguntas.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxTest2Preguntas.gridx = 0;
-		gbc_comboBoxTest2Preguntas.gridy = 0;
-		panel_4.add(comboBoxTest2Preguntas, gbc_comboBoxTest2Preguntas);
-		comboBoxTest2Preguntas.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Preguntas T2", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		JComboBox<Double> comboBoxTest2Percent = new JComboBox<Double>();
+		GridBagConstraints gbc_comboBoxTest2Percent = new GridBagConstraints();
+		gbc_comboBoxTest2Percent.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxTest2Percent.gridwidth = 3;
+		gbc_comboBoxTest2Percent.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxTest2Percent.gridx = 0;
+		gbc_comboBoxTest2Percent.gridy = 0;
+		panelTest2.add(comboBoxTest2Percent, gbc_comboBoxTest2Percent);
+		comboBoxTest2Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "% Test 2", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		addComboBoxPercent(comboBoxTest2Percent);
+		
+		
 		
 		JComboBox comboBoxTest2Aciertos = new JComboBox();
 		GridBagConstraints gbc_comboBoxTest2Aciertos = new GridBagConstraints();
 		gbc_comboBoxTest2Aciertos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxTest2Aciertos.gridwidth = 2;
 		gbc_comboBoxTest2Aciertos.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxTest2Aciertos.gridx = 2;
+		gbc_comboBoxTest2Aciertos.gridx = 3;
 		gbc_comboBoxTest2Aciertos.gridy = 0;
-		panel_4.add(comboBoxTest2Aciertos, gbc_comboBoxTest2Aciertos);
-		comboBoxTest2Aciertos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Aciertos T2", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelTest2.add(comboBoxTest2Aciertos, gbc_comboBoxTest2Aciertos);
+		comboBoxTest2Aciertos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Aciertos Test 2", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
 		JComboBox comboBoxTest2Fallos = new JComboBox();
 		GridBagConstraints gbc_comboBoxTest2Fallos = new GridBagConstraints();
 		gbc_comboBoxTest2Fallos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxTest2Fallos.gridx = 5;
 		gbc_comboBoxTest2Fallos.gridy = 0;
-		panel_4.add(comboBoxTest2Fallos, gbc_comboBoxTest2Fallos);
-		comboBoxTest2Fallos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Fallos T2", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelTest2.add(comboBoxTest2Fallos, gbc_comboBoxTest2Fallos);
+		comboBoxTest2Fallos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Fallos Test 2", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
 		JSeparator separator = new JSeparator();
 		separator.setBorder(null);
@@ -557,53 +560,87 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		separator.setBackground(new Color(0, 0, 153));
 		GridBagConstraints gbc_separator = new GridBagConstraints();
 		gbc_separator.fill = GridBagConstraints.BOTH;
-		gbc_separator.gridwidth = 10;
-		gbc_separator.insets = new Insets(0, 0, 5, 0);
-		gbc_separator.gridx = 0;
-		gbc_separator.gridy = 6;
+		gbc_separator.gridwidth = 7;
+		gbc_separator.insets = new Insets(0, 0, 5, 5);
+		gbc_separator.gridx = 1;
+		gbc_separator.gridy = 8;
 		panelAlumno.add(separator, gbc_separator);
 		
-		JComboBox comboBoxTrabajo2Estado = new JComboBox();
-		comboBoxTrabajo2Estado.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Estado", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		GridBagConstraints gbc_comboBoxTrabajo2Estado = new GridBagConstraints();
-		gbc_comboBoxTrabajo2Estado.gridwidth = 2;
-		gbc_comboBoxTrabajo2Estado.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxTrabajo2Estado.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxTrabajo2Estado.gridx = 2;
-		gbc_comboBoxTrabajo2Estado.gridy = 7;
-		panelAlumno.add(comboBoxTrabajo2Estado, gbc_comboBoxTrabajo2Estado);
+		JPanel panelTrabajos = new JPanel();
+		panelTrabajos.setOpaque(false);
+		panelTrabajos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Trabajos - Dias de retraso", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_panelTrabajos = new GridBagConstraints();
+		gbc_panelTrabajos.gridheight = 3;
+		gbc_panelTrabajos.gridwidth = 6;
+		gbc_panelTrabajos.insets = new Insets(0, 0, 5, 5);
+		gbc_panelTrabajos.fill = GridBagConstraints.BOTH;
+		gbc_panelTrabajos.gridx = 2;
+		gbc_panelTrabajos.gridy = 9;
+		panelAlumno.add(panelTrabajos, gbc_panelTrabajos);
+		GridBagLayout gbl_panelTrabajos = new GridBagLayout();
+		gbl_panelTrabajos.columnWidths = new int[]{38, 38, 0, 38, 38, 38, 0};
+		gbl_panelTrabajos.rowHeights = new int[]{31, 0};
+		gbl_panelTrabajos.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panelTrabajos.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelTrabajos.setLayout(gbl_panelTrabajos);
 		
-		JComboBox comboBoxTrabajo2Retraso = new JComboBox();
-		comboBoxTrabajo2Retraso.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Dias de Retraso", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		GridBagConstraints gbc_comboBoxTrabajo2Retraso = new GridBagConstraints();
-		gbc_comboBoxTrabajo2Retraso.gridwidth = 3;
-		gbc_comboBoxTrabajo2Retraso.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxTrabajo2Retraso.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxTrabajo2Retraso.gridx = 5;
-		gbc_comboBoxTrabajo2Retraso.gridy = 7;
-		panelAlumno.add(comboBoxTrabajo2Retraso, gbc_comboBoxTrabajo2Retraso);
+		JComboBox comboBoxTRetrasoTrabajo1 = new JComboBox();
+		comboBoxTRetrasoTrabajo1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Trabajo 1", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_comboBoxTRetrasoTrabajo1 = new GridBagConstraints();
+		gbc_comboBoxTRetrasoTrabajo1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxTRetrasoTrabajo1.gridwidth = 3;
+		gbc_comboBoxTRetrasoTrabajo1.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxTRetrasoTrabajo1.gridx = 0;
+		gbc_comboBoxTRetrasoTrabajo1.gridy = 0;
+		panelTrabajos.add(comboBoxTRetrasoTrabajo1, gbc_comboBoxTRetrasoTrabajo1);
 		
-		JComboBox comboBox_2_10 = new JComboBox();
-		comboBox_2_10.setBorder(new TitledBorder(null, "Examen 1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GridBagConstraints gbc_comboBox_2_10 = new GridBagConstraints();
-		gbc_comboBox_2_10.gridwidth = 2;
-		gbc_comboBox_2_10.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBox_2_10.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_2_10.gridx = 8;
-		gbc_comboBox_2_10.gridy = 7;
-		panelAlumno.add(comboBox_2_10, gbc_comboBox_2_10);
+		JComboBox comboBoxRetrasoTrabajo2 = new JComboBox();
+		comboBoxRetrasoTrabajo2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Trabajo 2", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_comboBoxRetrasoTrabajo2 = new GridBagConstraints();
+		gbc_comboBoxRetrasoTrabajo2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxRetrasoTrabajo2.gridwidth = 2;
+		gbc_comboBoxRetrasoTrabajo2.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxRetrasoTrabajo2.gridx = 3;
+		gbc_comboBoxRetrasoTrabajo2.gridy = 0;
+		panelTrabajos.add(comboBoxRetrasoTrabajo2, gbc_comboBoxRetrasoTrabajo2);
+		
+		JComboBox comboBoxRetrasoTrabajo3 = new JComboBox();
+		comboBoxRetrasoTrabajo3.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Trabajo 3", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagConstraints gbc_comboBoxRetrasoTrabajo3 = new GridBagConstraints();
+		gbc_comboBoxRetrasoTrabajo3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxRetrasoTrabajo3.gridx = 5;
+		gbc_comboBoxRetrasoTrabajo3.gridy = 0;
+		panelTrabajos.add(comboBoxRetrasoTrabajo3, gbc_comboBoxRetrasoTrabajo3);
 		
 		JButton btnCrearAlumno = new JButton("Crear Alumno");
 		btnCrearAlumno.setBorderPainted(false);
 		btnCrearAlumno.setOpaque(true);
 		btnCrearAlumno.setBackground(new Color(0, 153, 102));
 		GridBagConstraints gbc_btnCrearAlumno = new GridBagConstraints();
+		gbc_btnCrearAlumno.gridheight = 3;
 		gbc_btnCrearAlumno.fill = GridBagConstraints.BOTH;
-		gbc_btnCrearAlumno.gridwidth = 5;
-		gbc_btnCrearAlumno.insets = new Insets(0, 0, 0, 5);
-		gbc_btnCrearAlumno.gridx = 4;
-		gbc_btnCrearAlumno.gridy = 8;
+		gbc_btnCrearAlumno.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCrearAlumno.gridx = 5;
+		gbc_btnCrearAlumno.gridy = 13;
 		panelAlumno.add(btnCrearAlumno, gbc_btnCrearAlumno);
+		
+		JLabel lblNotaFinal = new JLabel("Nota Final");
+		GridBagConstraints gbc_lblNotaFinal = new GridBagConstraints();
+		gbc_lblNotaFinal.gridheight = 3;
+		gbc_lblNotaFinal.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNotaFinal.gridx = 7;
+		gbc_lblNotaFinal.gridy = 13;
+		panelAlumno.add(lblNotaFinal, gbc_lblNotaFinal);
+		
+		JLabel lblNiaAsignado = new JLabel("");
+		lblNiaAsignado.setBorder(new TitledBorder(null, "Nia Asignado", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_lblNiaAsignado = new GridBagConstraints();
+		gbc_lblNiaAsignado.fill = GridBagConstraints.BOTH;
+		gbc_lblNiaAsignado.gridheight = 3;
+		gbc_lblNiaAsignado.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNiaAsignado.gridx = 3;
+		gbc_lblNiaAsignado.gridy = 13;
+		panelAlumno.add(lblNiaAsignado, gbc_lblNiaAsignado);
 
 		// PANEL
 		// NOTAS///////////////////////////////////////////////////////////////////////////////////////////
@@ -763,7 +800,32 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		
 		btnCrearAlumno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int newNia = 0;
+				for (Grupo grupo : listaGrupos) {
+					
+					newNia += grupo.listaAlumnos.size();
+				}
 				
+				Grupo grupoSeleccionado = listaGrupos.get(comboBoxGrupo.getSelectedIndex());
+				
+				String newNiaStr = Integer.toString(grupoSeleccionado.listaAlumnos.size() + 1);
+				
+				try {
+					grupoSeleccionado.addAlumno(new Alumno(newNiaStr, textFieldNombre.getText(), textFieldApellido.getText()));
+					lblNiaAsignado.setText(newNiaStr);
+				} catch (niaRepetidoExcepcion e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+//				
+				
+//				public Alumno(String nia, String nombre, String apellido, ArrayList<Examen> examenes, ArrayList<TrabajoClase> trabajos) {
+//					this(nia, nombre, apellido);
+//					setExamenes(examenes);
+//					setTrabajos(trabajos);
+//				}
+
 				
 			}
 		});
@@ -775,6 +837,18 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 	
 	public void addGrupo(String nombreGrupo) {
 		listaGrupos.add(new Grupo(nombreGrupo));
+	}
+	
+	public void addComboBoxNotas(JComboBox<Double> comboBoxNotas) {
+		for(double i=0; i <=10; i+=0.25 ) {
+			comboBoxNotas.addItem(i);	
+			}
+	}
+	
+	public void addComboBoxPercent(JComboBox<Double> comboBoxPercent) {
+		for(double i=0; i <=100; i+=5 ) {
+			comboBoxPercent.addItem(i);	
+			}
 	}
 	
 	
