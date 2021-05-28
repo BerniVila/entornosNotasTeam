@@ -13,6 +13,10 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.awt.GridBagLayout;
@@ -36,6 +40,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JComboBox;
 import java.awt.Dimension;
 import javax.swing.JSeparator;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class PantallaInicioGUIPRUEBASLOCAS {
 
@@ -44,6 +50,7 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 	private JTextField textFieldApellido;
 	ArrayList<Grupo> listaGrupos = new ArrayList<Grupo>();
 	ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+	Connection connect;
 
 	/**
 	 * Launch the application.
@@ -82,7 +89,27 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 	 */
 	private void initialize()
 			throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion, niaRepetidoExcepcion {
-		// Datos de los alumnos, aquí implementaríamos el acceso a una base de datos
+		
+		// CONEXION A BASE DE DATOS//////////////////////////////////////////////////////////////////////////////////////
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			String url = "jdbc:mysql://localhost:3306/calculadoranotasentornos";
+			String user = "root";
+			String password = "administrador";
+			Connection connect = DriverManager.getConnection(url, user, password);
+
+		} catch (Exception e) {
+			System.out.println(e);
+			;
+
+		}
+		
+				
+		
+		
+		
 		// desde la clase Grupo
 		Grupo daw = new Grupo("DAW");
 		listaGrupos.add(daw);
@@ -163,6 +190,12 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 		
 		
 		frmCalculanotas = new JFrame();
+		frmCalculanotas.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				//cerrar conexion a base de datos
+			}
+		});
 		frmCalculanotas.getContentPane().setBackground(Color.WHITE);
 		frmCalculanotas.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		frmCalculanotas.setTitle("Bienvenido/a al calculador de notas del Juan de Garay");
@@ -851,5 +884,7 @@ public class PantallaInicioGUIPRUEBASLOCAS {
 			}
 	}
 	
+	
+	//CONEXION A BASE DE DATOS//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 }
