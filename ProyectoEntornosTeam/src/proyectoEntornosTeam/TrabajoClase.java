@@ -28,6 +28,8 @@ public class TrabajoClase {
 	 */
 	private double puntosPenalizacion;
 
+	private String descripcion;
+	
 	/**
 	 * Constructor vacío de objetos de la clase TrabajoClase
 	 */
@@ -39,9 +41,9 @@ public class TrabajoClase {
 	 * 
 	 * @param diasRetraso Indica los días de retraso en la entrega del trabajo
 	 */
-	public TrabajoClase(int diasRetraso) {
+	public TrabajoClase(int diasRetraso, String descripcion) {
 		this.diasRetraso = diasRetraso;
-
+		this.descripcion = descripcion;
 		if (this.diasRetraso > 5) {
 			this.entregado = false;
 		} else {
@@ -97,9 +99,17 @@ public class TrabajoClase {
 		this.diasRetraso = diasRetraso;
 	}
 
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	@Override
 	public String toString() {
-		return " entregado: " + entregado + ", dias de retraso: " + diasRetraso + ", penalizacion: "
+		return "entregado: " + entregado + ", dias de retraso: " + diasRetraso + ", penalizacion: "
 				+ puntosPenalizacion;
 	}
 }
