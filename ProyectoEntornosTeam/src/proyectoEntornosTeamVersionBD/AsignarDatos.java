@@ -10,8 +10,8 @@ public class AsignarDatos {
 	public static Scanner tec = new Scanner(System.in);
 
 	public static void main(String[] args) throws Exception {
-		Grupo daw = new Grupo("DAW", false);
 		try {
+			Grupo daw = new Grupo("DAW");
 			daw.addAlumno(new Alumno("1", "nombre1", "apellido1"));
 			daw.getListaAlumnos().get(daw.getListaAlumnos().size()-1).addExamenes(
 					new ExamenClasico(0.1, 10,"Primer examen clasico."),new ExamenClasico(0.2, 10,"Segundo examen clasico."),new ExamenClasico(0.2, 10,"Tercer examen clasico."), new ExamenTest(0.25, 30, 0, "Primer examen test"), new ExamenTest(0.25, 30, 0,"Segundo examen test"));
@@ -72,7 +72,7 @@ public class AsignarDatos {
 			daw.getListaAlumnos().get(daw.getListaAlumnos().size()-1).addTrabajos(
 					new TrabajoClase(0, "Trabajo1"), new TrabajoClase(0, "Trabajo2"), new TrabajoClase(0, "Trabajo3"));
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println(e);
 		}
 	}
 }

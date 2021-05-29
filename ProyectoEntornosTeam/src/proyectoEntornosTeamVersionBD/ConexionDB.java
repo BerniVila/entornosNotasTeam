@@ -111,7 +111,8 @@ public class ConexionDB {
 		ResultSet rsGrupo = statement.executeQuery("select * from grupo");
 		ArrayList<Grupo> g = new ArrayList<Grupo>();
 		while(rsGrupo.next()) {
-			g.add(new Grupo(rsGrupo.getString(1), true));
+			g.add(new Grupo());
+			g.get(g.size()-1).setNombreGrupo(rsGrupo.getString(1));
 		}
 		for (int i = 0; i < g.size(); i++) {
 			leerBDAlumno(g.get(i));

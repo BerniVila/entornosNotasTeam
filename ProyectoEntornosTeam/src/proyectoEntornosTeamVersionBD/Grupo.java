@@ -28,18 +28,18 @@ public class Grupo {
 	 */
 	private ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
 	
-	
-	public Grupo(String nombre, Boolean desdeLeerBD) throws Exception {
-		try {
-			conexion = new ConexionDB();
-			this.nombreGrupo = nombre;
-			if (desdeLeerBD == false) {
-				conexion.crearGrupo(this); 
+	public Grupo() {};
+	public Grupo(String nombre) throws Exception {
+		conexion = new ConexionDB();
+		this.nombreGrupo = nombre;
+
+		ArrayList<Grupo> grupos = conexion.leerBD();
+		for (Grupo g:grupos) {
+			if (g.getNombreGrupo().compareTo(nombre) == 0) {
+				throw new grupoDuplicadoExcepcion("Ya existe el grupo " + nombre);
 			}
-		} 
-		catch (Exception e) {
-			throw e;
 		}
+		conexion.crearGrupo(this); 
 	}
 	
 	
@@ -50,7 +50,10 @@ public class Grupo {
 
 
 
-	public void setNombreGrupo(String nombreGrupo) throws SQLException {
+	public void setNombreGrupo(String nombreGrupo) {
+		this.nombreGrupo = nombreGrupo;
+	}
+	public void cambiarNombreGrupo(String nombreGrupo) throws SQLException {
 		this.nombreGrupo = nombreGrupo;
 		conexion.cambiarNombreGrupo(this, nombreGrupo);
 	}
