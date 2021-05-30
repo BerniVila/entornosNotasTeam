@@ -129,6 +129,21 @@ public class ConexionDB {
 			leerBDExameneTrabajo(g.getListaAlumnos().get(i));
 		}
 	}
+	
+	
+	public void leerBDAlumnos(Grupo g) throws Exception {
+		ResultSet rsAlumno = statement.executeQuery("select * from alumno where NombreGrupo = \"" + g.getNombreGrupo() +"\"");
+		while (rsAlumno.next()) {
+			Alumno al = new Alumno(rsAlumno.getString(1),rsAlumno.getString(2),rsAlumno.getString(3));
+			g.addAlumnoBD(al);
+		}
+		for (int i = 0; i < g.getListaAlumnos().size(); i++) {
+			leerBDExameneTrabajo(g.getListaAlumnos().get(i));
+		}
+	}
+	
+	
+	
 	private void leerBDExameneTrabajo(Alumno al) throws ClassNotFoundException, Exception {
 		ResultSet rsExClasico = statement.executeQuery("select * from ExamenClasico where NIA = \"" + al.getNia() + "\"");
 		while (rsExClasico.next()) {
