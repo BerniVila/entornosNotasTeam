@@ -100,10 +100,10 @@ public class ConexionDB {
 	public void anyadirTrabajo(Alumno al, TrabajoClase tc) throws SQLException {
 		statement.execute("insert into Trabajo values (\"" + tc.getDiasRetraso() + "\",\"" + tc.getDescripcion() + "\",\"" + al.getNia() + "\")");
 	}
-	public void eliminarTrajo(String nia, String descripcion) throws SQLException {
+	public void eliminarTrabajo(String nia, String descripcion) throws SQLException {
 		statement.execute("delete from trabajo where (NIA = \"" + nia + "\") & (descripcion = \"" + descripcion + "\");");
 	}
-	public void eliminarTrajo(Alumno al, TrabajoClase tc) throws SQLException {
+	public void eliminarTrabajo(Alumno al, TrabajoClase tc) throws SQLException {
 		statement.execute("delete from trabajo where (NIA = \"" + al.getNia() + "\") & (descripcion = \"" + tc.getDescripcion() + "\");");
 	}
 	
