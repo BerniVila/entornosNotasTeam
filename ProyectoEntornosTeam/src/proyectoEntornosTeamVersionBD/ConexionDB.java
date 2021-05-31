@@ -3,6 +3,8 @@ package proyectoEntornosTeamVersionBD;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
 import com.mysql.cj.xdevapi.Result;
 
 public class ConexionDB {
@@ -141,6 +143,7 @@ public class ConexionDB {
 			leerBDExameneTrabajo(g.getListaAlumnos().get(i));
 		}
 	}
+	 
 	
 	
 	
