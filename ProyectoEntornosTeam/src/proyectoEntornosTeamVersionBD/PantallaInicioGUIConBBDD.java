@@ -50,6 +50,7 @@ public class PantallaInicioGUIConBBDD {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	ArrayList<Grupo> grupos;
+	ConexionDB conexion;
 
 	/**
 	 * Launch the application.
@@ -89,8 +90,8 @@ public class PantallaInicioGUIConBBDD {
 	private void initialize() throws notaInvalidoExamenClasicoExcepcion, notaInvalidoExamenTestExcepcion,
 			niaRepetidoExcepcion, ClassNotFoundException, SQLException, SinPorcentajeExcepcion {
 		try {
-			ConexionDB conexion = new ConexionDB();
-			//AsignarDatos.main(null);
+			conexion = new ConexionDB();
+			AsignarDatos.main(null);  //Solamente en la primer ejecucion para probar la aplicacion
 			grupos = conexion.leerBD();
 			Grupo daw = grupos.get(0);
 
@@ -300,24 +301,24 @@ public class PantallaInicioGUIConBBDD {
 			gbc_separator_2.gridy = 4;
 			panelAlumno.add(separator_2, gbc_separator_2);
 
-			JPanel panelExamen1 = new JPanel();
-			panelExamen1.setOpaque(false);
-			panelExamen1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+			JPanel panelExamenClasico = new JPanel();
+			panelExamenClasico.setOpaque(false);
+			panelExamenClasico.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"Examen Clasico", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			GridBagConstraints gbc_panelExamen1 = new GridBagConstraints();
-			gbc_panelExamen1.gridheight = 3;
-			gbc_panelExamen1.fill = GridBagConstraints.HORIZONTAL;
-			gbc_panelExamen1.gridwidth = 6;
-			gbc_panelExamen1.insets = new Insets(0, 0, 5, 5);
-			gbc_panelExamen1.gridx = 1;
-			gbc_panelExamen1.gridy = 5;
-			panelAlumno.add(panelExamen1, gbc_panelExamen1);
-			GridBagLayout gbl_panelExamen1 = new GridBagLayout();
-			gbl_panelExamen1.columnWidths = new int[] { 38, 38, 38, 0, 0, 0, 38, 0 };
-			gbl_panelExamen1.rowHeights = new int[] { 31, 0, 0 };
-			gbl_panelExamen1.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
-			gbl_panelExamen1.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-			panelExamen1.setLayout(gbl_panelExamen1);
+			GridBagConstraints gbc_panelExamenClasico = new GridBagConstraints();
+			gbc_panelExamenClasico.gridheight = 3;
+			gbc_panelExamenClasico.fill = GridBagConstraints.HORIZONTAL;
+			gbc_panelExamenClasico.gridwidth = 6;
+			gbc_panelExamenClasico.insets = new Insets(0, 0, 5, 5);
+			gbc_panelExamenClasico.gridx = 1;
+			gbc_panelExamenClasico.gridy = 5;
+			panelAlumno.add(panelExamenClasico, gbc_panelExamenClasico);
+			GridBagLayout gbl_panelExamenClasico = new GridBagLayout();
+			gbl_panelExamenClasico.columnWidths = new int[] { 38, 38, 38, 0, 0, 0, 38, 0 };
+			gbl_panelExamenClasico.rowHeights = new int[] { 31, 0, 0 };
+			gbl_panelExamenClasico.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+			gbl_panelExamenClasico.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+			panelExamenClasico.setLayout(gbl_panelExamenClasico);
 			
 			JComboBox<Integer> comboBoxExamenClasicoNia = new JComboBox<Integer>();
 			comboBoxExamenClasicoNia.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "NIA", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -326,52 +327,53 @@ public class PantallaInicioGUIConBBDD {
 			gbc_comboBoxExamenClasicoNia.fill = GridBagConstraints.HORIZONTAL;
 			gbc_comboBoxExamenClasicoNia.gridx = 2;
 			gbc_comboBoxExamenClasicoNia.gridy = 0;
-			panelExamen1.add(comboBoxExamenClasicoNia, gbc_comboBoxExamenClasicoNia);
+			panelExamenClasico.add(comboBoxExamenClasicoNia, gbc_comboBoxExamenClasicoNia);
 			addComboBoxNia(comboBoxExamenClasicoNia);
 
-			JComboBox<Double> comboBoxExamen1Percent = new JComboBox<Double>();
-			GridBagConstraints gbc_comboBoxExamen1Percent = new GridBagConstraints();
-			gbc_comboBoxExamen1Percent.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxExamen1Percent.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBoxExamen1Percent.gridx = 3;
-			gbc_comboBoxExamen1Percent.gridy = 0;
-			panelExamen1.add(comboBoxExamen1Percent, gbc_comboBoxExamen1Percent);
-			comboBoxExamen1Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "%",
+			JComboBox<Double> comboBoxExamenClasicoPercent = new JComboBox<Double>();
+			GridBagConstraints gbc_comboBoxExamenClasicoPercent = new GridBagConstraints();
+			gbc_comboBoxExamenClasicoPercent.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBoxExamenClasicoPercent.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBoxExamenClasicoPercent.gridx = 3;
+			gbc_comboBoxExamenClasicoPercent.gridy = 0;
+			panelExamenClasico.add(comboBoxExamenClasicoPercent, gbc_comboBoxExamenClasicoPercent);
+			comboBoxExamenClasicoPercent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "%",
 					TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			addComboBoxPercent(comboBoxExamen1Percent);
+			addComboBoxPercent(comboBoxExamenClasicoPercent);
 
-			JComboBox<Double> comboBoxNotaExamen1 = new JComboBox<Double>();
-			GridBagConstraints gbc_comboBoxNotaExamen1 = new GridBagConstraints();
-			gbc_comboBoxNotaExamen1.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxNotaExamen1.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBoxNotaExamen1.gridx = 4;
-			gbc_comboBoxNotaExamen1.gridy = 0;
-			panelExamen1.add(comboBoxNotaExamen1, gbc_comboBoxNotaExamen1);
-			comboBoxNotaExamen1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nota",
+			JComboBox<Double> comboBoxExamenClasicoNota = new JComboBox<Double>();
+			GridBagConstraints gbc_comboBoxExamenClasicoNota = new GridBagConstraints();
+			gbc_comboBoxExamenClasicoNota.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBoxExamenClasicoNota.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBoxExamenClasicoNota.gridx = 4;
+			gbc_comboBoxExamenClasicoNota.gridy = 0;
+			panelExamenClasico.add(comboBoxExamenClasicoNota, gbc_comboBoxExamenClasicoNota);
+			comboBoxExamenClasicoNota.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Nota",
 					TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			addComboBoxNotas(comboBoxNotaExamen1);
+			addComboBoxNotas(comboBoxExamenClasicoNota);
 
-			JComboBox<Double> comboBoxNotaExamen1_1 = new JComboBox<Double>();
-			comboBoxNotaExamen1_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+			JTextField textFieldExamenClasicoDescripcion = new JTextField();
+			textFieldExamenClasicoDescripcion.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"Descripcion", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			GridBagConstraints gbc_comboBoxNotaExamen1_1 = new GridBagConstraints();
-			gbc_comboBoxNotaExamen1_1.gridwidth = 7;
-			gbc_comboBoxNotaExamen1_1.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxNotaExamen1_1.gridx = 0;
-			gbc_comboBoxNotaExamen1_1.gridy = 1;
-			panelExamen1.add(comboBoxNotaExamen1_1, gbc_comboBoxNotaExamen1_1);
+			GridBagConstraints gbc_textFieldExamenClasicoDescripcion = new GridBagConstraints();
+			gbc_textFieldExamenClasicoDescripcion.gridwidth = 7;
+			gbc_textFieldExamenClasicoDescripcion.fill = GridBagConstraints.HORIZONTAL;
+			gbc_textFieldExamenClasicoDescripcion.gridx = 0;
+			gbc_textFieldExamenClasicoDescripcion.gridy = 1;
+			panelExamenClasico.add(textFieldExamenClasicoDescripcion, gbc_textFieldExamenClasicoDescripcion);
 
-			JButton btnCrearAlumno_1 = new JButton("Agregar Examen Clasico");
-			btnCrearAlumno_1.setOpaque(true);
-			btnCrearAlumno_1.setBorderPainted(false);
-			btnCrearAlumno_1.setBackground(new Color(0, 153, 102));
-			GridBagConstraints gbc_btnCrearAlumno_1 = new GridBagConstraints();
-			gbc_btnCrearAlumno_1.gridheight = 2;
-			gbc_btnCrearAlumno_1.fill = GridBagConstraints.BOTH;
-			gbc_btnCrearAlumno_1.insets = new Insets(0, 0, 5, 5);
-			gbc_btnCrearAlumno_1.gridx = 7;
-			gbc_btnCrearAlumno_1.gridy = 6;
-			panelAlumno.add(btnCrearAlumno_1, gbc_btnCrearAlumno_1);
+			JButton btnCrearExamenClasico = new JButton("Agregar Examen Clasico");
+			btnCrearExamenClasico.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			btnCrearExamenClasico.setOpaque(true);
+			btnCrearExamenClasico.setBorderPainted(false);
+			btnCrearExamenClasico.setBackground(new Color(0, 153, 102));
+			GridBagConstraints gbc_btnCrearExamenClasico = new GridBagConstraints();
+			gbc_btnCrearExamenClasico.gridheight = 2;
+			gbc_btnCrearExamenClasico.fill = GridBagConstraints.BOTH;
+			gbc_btnCrearExamenClasico.insets = new Insets(0, 0, 5, 5);
+			gbc_btnCrearExamenClasico.gridx = 7;
+			gbc_btnCrearExamenClasico.gridy = 6;
+			panelAlumno.add(btnCrearExamenClasico, gbc_btnCrearExamenClasico);
 
 			JSeparator separator = new JSeparator();
 			separator.setBorder(null);
@@ -385,24 +387,24 @@ public class PantallaInicioGUIConBBDD {
 			gbc_separator.gridy = 8;
 			panelAlumno.add(separator, gbc_separator);
 
-			JPanel panelTest1 = new JPanel();
-			panelTest1.setOpaque(false);
-			panelTest1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+			JPanel panelTest = new JPanel();
+			panelTest.setOpaque(false);
+			panelTest.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"Examen Tipo Test", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			GridBagConstraints gbc_panelTest1 = new GridBagConstraints();
-			gbc_panelTest1.gridheight = 4;
-			gbc_panelTest1.fill = GridBagConstraints.BOTH;
-			gbc_panelTest1.gridwidth = 6;
-			gbc_panelTest1.insets = new Insets(0, 0, 5, 5);
-			gbc_panelTest1.gridx = 1;
-			gbc_panelTest1.gridy = 9;
-			panelAlumno.add(panelTest1, gbc_panelTest1);
-			GridBagLayout gbl_panelTest1 = new GridBagLayout();
-			gbl_panelTest1.columnWidths = new int[] { 38, 38, 0, 38, 38, 38, 0 };
-			gbl_panelTest1.rowHeights = new int[] { 31, 0, 0 };
-			gbl_panelTest1.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
-			gbl_panelTest1.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-			panelTest1.setLayout(gbl_panelTest1);
+			GridBagConstraints gbc_panelTest = new GridBagConstraints();
+			gbc_panelTest.gridheight = 4;
+			gbc_panelTest.fill = GridBagConstraints.BOTH;
+			gbc_panelTest.gridwidth = 6;
+			gbc_panelTest.insets = new Insets(0, 0, 5, 5);
+			gbc_panelTest.gridx = 1;
+			gbc_panelTest.gridy = 9;
+			panelAlumno.add(panelTest, gbc_panelTest);
+			GridBagLayout gbl_panelTest = new GridBagLayout();
+			gbl_panelTest.columnWidths = new int[] { 38, 38, 0, 38, 38, 38, 0 };
+			gbl_panelTest.rowHeights = new int[] { 31, 0, 0 };
+			gbl_panelTest.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+			gbl_panelTest.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+			panelTest.setLayout(gbl_panelTest);
 			
 			JComboBox<Integer> comboBoxExamenTestNia = new JComboBox<Integer>();
 			comboBoxExamenTestNia.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "NIA", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -411,65 +413,70 @@ public class PantallaInicioGUIConBBDD {
 			gbc_comboBoxExamenTestNia.fill = GridBagConstraints.HORIZONTAL;
 			gbc_comboBoxExamenTestNia.gridx = 1;
 			gbc_comboBoxExamenTestNia.gridy = 0;
-			panelTest1.add(comboBoxExamenTestNia, gbc_comboBoxExamenTestNia);
+			panelTest.add(comboBoxExamenTestNia, gbc_comboBoxExamenTestNia);
 			addComboBoxNia(comboBoxExamenTestNia);
 
-			JComboBox<Double> comboBoxTest1Percent = new JComboBox<Double>();
-			GridBagConstraints gbc_comboBoxTest1Percent = new GridBagConstraints();
-			gbc_comboBoxTest1Percent.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxTest1Percent.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBoxTest1Percent.gridx = 2;
-			gbc_comboBoxTest1Percent.gridy = 0;
-			panelTest1.add(comboBoxTest1Percent, gbc_comboBoxTest1Percent);
-			comboBoxTest1Percent.setName("Preguntas");
-			comboBoxTest1Percent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+			JComboBox<Double> comboBoxTestPercent = new JComboBox<Double>();
+			GridBagConstraints gbc_comboBoxTestPercent = new GridBagConstraints();
+			gbc_comboBoxTestPercent.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBoxTestPercent.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBoxTestPercent.gridx = 2;
+			gbc_comboBoxTestPercent.gridy = 0;
+			panelTest.add(comboBoxTestPercent, gbc_comboBoxTestPercent);
+			comboBoxTestPercent.setName("Preguntas");
+			comboBoxTestPercent.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"% Test", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			addComboBoxPercent(comboBoxTest1Percent);
+			addComboBoxPercent(comboBoxTestPercent);
 
-			JComboBox comboBoxTest1Aciertos = new JComboBox();
-			GridBagConstraints gbc_comboBoxTest1Aciertos = new GridBagConstraints();
-			gbc_comboBoxTest1Aciertos.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxTest1Aciertos.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBoxTest1Aciertos.gridx = 3;
-			gbc_comboBoxTest1Aciertos.gridy = 0;
-			panelTest1.add(comboBoxTest1Aciertos, gbc_comboBoxTest1Aciertos);
-			comboBoxTest1Aciertos.setName("Aciertos");
-			comboBoxTest1Aciertos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-					"Aciertos Test", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-
-			JComboBox comboBoxTest1Fallos = new JComboBox();
-			GridBagConstraints gbc_comboBoxTest1Fallos = new GridBagConstraints();
-			gbc_comboBoxTest1Fallos.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBoxTest1Fallos.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxTest1Fallos.gridx = 4;
-			gbc_comboBoxTest1Fallos.gridy = 0;
-			panelTest1.add(comboBoxTest1Fallos, gbc_comboBoxTest1Fallos);
-			comboBoxTest1Fallos.setName("Fallos");
-			comboBoxTest1Fallos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-					"Fallos Test", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-
-			JComboBox comboBoxTest1Fallos_1 = new JComboBox();
-			comboBoxTest1Fallos_1.setName("Fallos");
-			comboBoxTest1Fallos_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+			JComboBox<Integer> comboBoxTestAciertos = new JComboBox<Integer>();
+			GridBagConstraints gbc_comboBoxTestAciertos = new GridBagConstraints();
+			gbc_comboBoxTestAciertos.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBoxTestAciertos.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBoxTestAciertos.gridx = 3;
+			gbc_comboBoxTestAciertos.gridy = 0;
+			panelTest.add(comboBoxTestAciertos, gbc_comboBoxTestAciertos);
+			comboBoxTestAciertos.setName("Aciertos");
+			comboBoxTestAciertos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Aciertos", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			addComboBoxAciertos(comboBoxTestAciertos);
+			
+			
+			
+			JComboBox<Integer> comboBoxTestFallos = new JComboBox<Integer>();
+			GridBagConstraints gbc_comboBoxTestFallos = new GridBagConstraints();
+			gbc_comboBoxTestFallos.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBoxTestFallos.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBoxTestFallos.gridx = 4;
+			gbc_comboBoxTestFallos.gridy = 0;
+			panelTest.add(comboBoxTestFallos, gbc_comboBoxTestFallos);
+			comboBoxTestFallos.setName("Fallos");
+			comboBoxTestFallos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Fallos", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			addComboBoxFallos(comboBoxTestFallos);
+			
+			
+			
+			JTextField textFieldTestDescripcion = new JTextField();
+			textFieldTestDescripcion.setName("Fallos");
+			textFieldTestDescripcion.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"Descripcion", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			GridBagConstraints gbc_comboBoxTest1Fallos_1 = new GridBagConstraints();
-			gbc_comboBoxTest1Fallos_1.gridwidth = 6;
-			gbc_comboBoxTest1Fallos_1.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxTest1Fallos_1.gridx = 0;
-			gbc_comboBoxTest1Fallos_1.gridy = 1;
-			panelTest1.add(comboBoxTest1Fallos_1, gbc_comboBoxTest1Fallos_1);
+			GridBagConstraints gbc_textFieldTestDescripcion = new GridBagConstraints();
+			gbc_textFieldTestDescripcion.gridwidth = 6;
+			gbc_textFieldTestDescripcion.fill = GridBagConstraints.HORIZONTAL;
+			gbc_textFieldTestDescripcion.gridx = 0;
+			gbc_textFieldTestDescripcion.gridy = 1;
+			panelTest.add(textFieldTestDescripcion, gbc_textFieldTestDescripcion);
 
-			JButton btnCrearAlumno_2 = new JButton("Agregar Test");
-			btnCrearAlumno_2.setOpaque(true);
-			btnCrearAlumno_2.setBorderPainted(false);
-			btnCrearAlumno_2.setBackground(new Color(0, 153, 102));
-			GridBagConstraints gbc_btnCrearAlumno_2 = new GridBagConstraints();
-			gbc_btnCrearAlumno_2.gridheight = 3;
-			gbc_btnCrearAlumno_2.fill = GridBagConstraints.BOTH;
-			gbc_btnCrearAlumno_2.insets = new Insets(0, 0, 5, 5);
-			gbc_btnCrearAlumno_2.gridx = 7;
-			gbc_btnCrearAlumno_2.gridy = 10;
-			panelAlumno.add(btnCrearAlumno_2, gbc_btnCrearAlumno_2);
+			JButton btnCrearExamenTest = new JButton("Agregar Test");
+			btnCrearExamenTest.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			btnCrearExamenTest.setOpaque(true);
+			btnCrearExamenTest.setBorderPainted(false);
+			btnCrearExamenTest.setBackground(new Color(0, 153, 102));
+			GridBagConstraints gbc_btnCrearExamenTest = new GridBagConstraints();
+			gbc_btnCrearExamenTest.gridheight = 3;
+			gbc_btnCrearExamenTest.fill = GridBagConstraints.BOTH;
+			gbc_btnCrearExamenTest.insets = new Insets(0, 0, 5, 5);
+			gbc_btnCrearExamenTest.gridx = 7;
+			gbc_btnCrearExamenTest.gridy = 10;
+			panelAlumno.add(btnCrearExamenTest, gbc_btnCrearExamenTest);
 
 			JSeparator separator_1 = new JSeparator();
 			separator_1.setOpaque(true);
@@ -512,38 +519,40 @@ public class PantallaInicioGUIConBBDD {
 			panelTrabajos.add(comboBoxTrabajoNia, gbc_comboBoxTrabajoNia);
 			addComboBoxNia(comboBoxTrabajoNia);
 
-			JComboBox comboBoxTRetrasoTrabajo1 = new JComboBox();
-			comboBoxTRetrasoTrabajo1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+			JComboBox<Integer> comboBoxRetrasoTrabajo = new JComboBox<Integer>();
+			comboBoxRetrasoTrabajo.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"Dias de Retraso", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			GridBagConstraints gbc_comboBoxTRetrasoTrabajo1 = new GridBagConstraints();
-			gbc_comboBoxTRetrasoTrabajo1.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxTRetrasoTrabajo1.gridwidth = 2;
-			gbc_comboBoxTRetrasoTrabajo1.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBoxTRetrasoTrabajo1.gridx = 3;
-			gbc_comboBoxTRetrasoTrabajo1.gridy = 0;
-			panelTrabajos.add(comboBoxTRetrasoTrabajo1, gbc_comboBoxTRetrasoTrabajo1);
+			GridBagConstraints gbc_comboBoxRetrasoTrabajo = new GridBagConstraints();
+			gbc_comboBoxRetrasoTrabajo.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBoxRetrasoTrabajo.gridwidth = 2;
+			gbc_comboBoxRetrasoTrabajo.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBoxRetrasoTrabajo.gridx = 3;
+			gbc_comboBoxRetrasoTrabajo.gridy = 0;
+			panelTrabajos.add(comboBoxRetrasoTrabajo, gbc_comboBoxRetrasoTrabajo);
+			addComboBoxRetraso(comboBoxRetrasoTrabajo);
 
-			JComboBox comboBoxRetrasoTrabajo2 = new JComboBox();
-			comboBoxRetrasoTrabajo2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+			JTextField textFieldTrabajoDescripcion = new JTextField();
+			textFieldTrabajoDescripcion.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"Descripcion", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			GridBagConstraints gbc_comboBoxRetrasoTrabajo2 = new GridBagConstraints();
-			gbc_comboBoxRetrasoTrabajo2.gridwidth = 6;
-			gbc_comboBoxRetrasoTrabajo2.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBoxRetrasoTrabajo2.gridx = 0;
-			gbc_comboBoxRetrasoTrabajo2.gridy = 1;
-			panelTrabajos.add(comboBoxRetrasoTrabajo2, gbc_comboBoxRetrasoTrabajo2);
+			GridBagConstraints gbc_textFieldTrabajoDescripcion = new GridBagConstraints();
+			gbc_textFieldTrabajoDescripcion.gridwidth = 6;
+			gbc_textFieldTrabajoDescripcion.fill = GridBagConstraints.HORIZONTAL;
+			gbc_textFieldTrabajoDescripcion.gridx = 0;
+			gbc_textFieldTrabajoDescripcion.gridy = 1;
+			panelTrabajos.add(textFieldTrabajoDescripcion, gbc_textFieldTrabajoDescripcion);
 
-			JButton btnCrearAlumno_2_1 = new JButton("Agregar Trabajo");
-			btnCrearAlumno_2_1.setOpaque(true);
-			btnCrearAlumno_2_1.setBorderPainted(false);
-			btnCrearAlumno_2_1.setBackground(new Color(0, 153, 102));
-			GridBagConstraints gbc_btnCrearAlumno_2_1 = new GridBagConstraints();
-			gbc_btnCrearAlumno_2_1.gridheight = 2;
-			gbc_btnCrearAlumno_2_1.fill = GridBagConstraints.BOTH;
-			gbc_btnCrearAlumno_2_1.insets = new Insets(0, 0, 0, 5);
-			gbc_btnCrearAlumno_2_1.gridx = 7;
-			gbc_btnCrearAlumno_2_1.gridy = 15;
-			panelAlumno.add(btnCrearAlumno_2_1, gbc_btnCrearAlumno_2_1);
+			JButton btnCrearTrabajoClase = new JButton("Agregar Trabajo");
+			btnCrearTrabajoClase.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			btnCrearTrabajoClase.setOpaque(true);
+			btnCrearTrabajoClase.setBorderPainted(false);
+			btnCrearTrabajoClase.setBackground(new Color(0, 153, 102));
+			GridBagConstraints gbc_btnCrearTrabajoClase = new GridBagConstraints();
+			gbc_btnCrearTrabajoClase.gridheight = 2;
+			gbc_btnCrearTrabajoClase.fill = GridBagConstraints.BOTH;
+			gbc_btnCrearTrabajoClase.insets = new Insets(0, 0, 0, 5);
+			gbc_btnCrearTrabajoClase.gridx = 7;
+			gbc_btnCrearTrabajoClase.gridy = 15;
+			panelAlumno.add(btnCrearTrabajoClase, gbc_btnCrearTrabajoClase);
 
 			// PANEL
 			// NOTAS///////////////////////////////////////////////////////////////////////////////////////////
@@ -614,19 +623,22 @@ public class PantallaInicioGUIConBBDD {
 			panelNotas.add(toggleDetalles, gbc_toggleButton);
 			
 			
+			//CREACION ALUMNOS////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
 			
 			btnCrearAlumno.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {  
+						conexion.leerBD();
 						int lastNIA = 0;
 						
 						for (Grupo grupo : grupos) {
-							lastNIA = lastNIA + grupo.getListaAlumnos().size();			
+							lastNIA = lastNIA + grupo.getListaAlumnos().size();		
 						}	
 						
-						//int lastNIA = conexion.leerBDAlumnos(daw);
+
 						String numeroNIA = String.valueOf(lastNIA + 1);
-						String nombreGrupo = grupos.get(comboBoxGrupo.getSelectedIndex()).getNombreGrupo();
+						String nombreGrupo = comboBoxGrupo.getSelectedItem().toString();
 						String nombreAlumno = textFieldNombre.getText();
 						String apellidoAlumno = textFieldApellido.getText();
 						
@@ -634,11 +646,13 @@ public class PantallaInicioGUIConBBDD {
 						
 						lblNiaAsignado.setText(numeroNIA);
 						
+						comboBoxExamenClasicoNia.addItem(lastNIA + 1);
+						comboBoxExamenTestNia.addItem(lastNIA + 1);
+						comboBoxTrabajoNia.addItem(lastNIA + 1);
 
-						grupos = conexion.leerBD();
 						
 						JFrame frame = new JFrame();
-						JOptionPane.showMessageDialog(frame, "Alumno " + textFieldNombre.getText() + textFieldApellido.getText()  + " creado con exito", "Greeting", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(frame, "Alumno " + textFieldNombre.getText() + " " + textFieldApellido.getText()  + " creado con exito", "Greeting", JOptionPane.INFORMATION_MESSAGE);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -657,10 +671,89 @@ public class PantallaInicioGUIConBBDD {
 				public void actionPerformed(ActionEvent e) {
 					textFieldNombre.setText("");
 					textFieldApellido.setText("");
+					lblNiaAsignado.setText("");
+				}
+			});
+			
+			//CREACION EXAMENES////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			btnCrearExamenClasico.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String niaSeleccionado = String.valueOf(comboBoxExamenClasicoNia.getSelectedItem());
+					Double percentSeleccionado = Double.valueOf(comboBoxExamenClasicoPercent.getSelectedItem().toString());
+					Double notaSeleccionada = Double.valueOf(comboBoxExamenClasicoNota.getSelectedItem().toString());
+					String descripcion = textFieldExamenClasicoDescripcion.getText();
+					
+					try {
+						conexion.anyadirExamenClasico(niaSeleccionado, percentSeleccionado, descripcion, notaSeleccionada);
+						
+						JFrame frame = new JFrame();
+						JOptionPane.showMessageDialog(frame, "Examen " + descripcion  + " creado con exito", "Greeting", JOptionPane.INFORMATION_MESSAGE);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 				}
 			});
 			
 			
+			btnCrearExamenTest.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					String niaSeleccionado = String.valueOf(comboBoxExamenClasicoNia.getSelectedItem());
+					Double percentSeleccionado = Double.valueOf(comboBoxTestPercent.getSelectedItem().toString());
+					int aciertos = Integer.valueOf(comboBoxTestAciertos.getSelectedItem().toString());
+					int fallos = Integer.valueOf(comboBoxTestFallos.getSelectedItem().toString());
+					String descripcion = textFieldExamenClasicoDescripcion.getText();
+					
+					try {
+						if (aciertos + fallos > 30) {
+							
+							JFrame frame = new JFrame();
+							JOptionPane.showMessageDialog(frame, "Los aciertos y los fallos no pueden sumar más de " + ExamenTest.NUM_PREGUNTAS + " en total." , "Error", JOptionPane.ERROR_MESSAGE);
+							
+						} else {
+							conexion.anyadirExamenTest(niaSeleccionado, percentSeleccionado, descripcion, aciertos, fallos);
+
+							JFrame frame = new JFrame();
+							JOptionPane.showMessageDialog(frame, "Test " + descripcion  + " creado con exito", "Greeting", JOptionPane.INFORMATION_MESSAGE);
+						}
+						
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+			});
+			
+			
+			
+			//CREACION TRABAJOS////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			btnCrearTrabajoClase.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					String niaSeleccionado = String.valueOf(comboBoxExamenClasicoNia.getSelectedItem());
+					int retraso = Integer.valueOf(comboBoxRetrasoTrabajo.getSelectedItem().toString());
+					String descripcion = textFieldExamenClasicoDescripcion.getText();
+					
+					try {
+						conexion.anyadirTrabajo(niaSeleccionado, retraso, descripcion);
+						
+						JFrame frame = new JFrame();
+						JOptionPane.showMessageDialog(frame, "Trabajo " + descripcion  + " creado con exito", "Greeting", JOptionPane.INFORMATION_MESSAGE);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+			});
+			
+			
+			//CREACION GRUPOS////////////////////////////////////////////////////////////////////////////////////////////////////////
 			
 			
 			btnCrearGrupo.addActionListener(new ActionListener() {
@@ -668,6 +761,7 @@ public class PantallaInicioGUIConBBDD {
 					try {
 						conexion.crearGrupo(textNombreGrupo.getText());
 						comboBoxGrupo.addItem(textNombreGrupo.getText());
+						conexion.leerBD();
 						
 
 						JFrame frame = new JFrame();
@@ -686,18 +780,57 @@ public class PantallaInicioGUIConBBDD {
 			
 			
 
+//			btnCalcularNota.addActionListener(new ActionListener() {
+//				public void actionPerformed(ActionEvent e) {
+//					if (txtNia.getText().isEmpty() || !Character.isDigit(txtNia.getText().charAt(0))
+//							|| Integer.valueOf(txtNia.getText()) < 1
+//							|| Integer.valueOf(txtNia.getText()) > daw.getListaAlumnos().size()) {
+//						txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//						txtAreaNotas.setText(
+//								"Ese NIA no existe en nuestra base de datos, prueba otra vez con un valor del 1 al 10");
+//						txtAreaNotas.setForeground(Color.RED);
+//
+//					} else {
+//						for (Alumno alumno : daw.getListaAlumnos()) {
+//							if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
+//								try {
+//									txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
+//									txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 40));
+//									txtAreaNotas.setText("Nota Global: " + alumno.calcNotaGlobal());
+//									toggleDetalles.setVisible(true);
+//									toggleDetalles.setText("Mostrar detalles");
+//									toggleDetalles.setSelected(false);
+//								} catch (SinPorcentajeExcepcion | porcentajeInvalidoExcepcion e1) {
+//									// TODO Auto-generated catch block
+//									e1.printStackTrace();
+//								}
+//								txtAreaNotas.setForeground(Color.BLACK);
+//							}
+//						}
+//
+//					}
+//				}
+//			});
+			
+			
+			
+			
+			
 			btnCalcularNota.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (txtNia.getText().isEmpty() || !Character.isDigit(txtNia.getText().charAt(0))
 							|| Integer.valueOf(txtNia.getText()) < 1
-							|| Integer.valueOf(txtNia.getText()) > daw.getListaAlumnos().size()) {
+							|| Integer.valueOf(txtNia.getText()) > comboBoxExamenClasicoNia.getItemCount()) {
 						txtAreaNotas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 						txtAreaNotas.setText(
 								"Ese NIA no existe en nuestra base de datos, prueba otra vez con un valor del 1 al 10");
 						txtAreaNotas.setForeground(Color.RED);
 
 					} else {
-						for (Alumno alumno : daw.getListaAlumnos()) {
+						for (Grupo grupo : grupos) {
+							
+						
+						for (Alumno alumno : grupo.getListaAlumnos()) {
 							if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
 								try {
 									txtAreaNotas.setMargin(gbc_toggleButton.insets = new Insets(20, 120, 5, 5));
@@ -713,7 +846,7 @@ public class PantallaInicioGUIConBBDD {
 								txtAreaNotas.setForeground(Color.BLACK);
 							}
 						}
-
+						}
 					}
 				}
 			});
@@ -769,19 +902,39 @@ public class PantallaInicioGUIConBBDD {
 	}
 
 	public void addComboBoxPercent(JComboBox<Double> comboBoxPercent) {
-		for (double i = 0; i <= 100; i += 5) {
-			comboBoxPercent.addItem(i);
+		for (double i = 0; i <= 1.01; i += 0.05) {
+			comboBoxPercent.addItem((Math.round(i * 100)) / 100.0);
 		}
 	}
 	
-	public void addComboBoxNia(JComboBox<Integer> comboBoxNia) {
+	public void addComboBoxNia(JComboBox<Integer> comboBoxNia) throws Exception {
 		int lastNIA = 0;
 		
 		for (Grupo grupo : grupos) {
 			lastNIA = lastNIA + grupo.getListaAlumnos().size();			
-		}
+		}	
+		
 		for (int i = 1; i <= lastNIA; i++) {
 			comboBoxNia.addItem(i);
+		}
+	}
+	
+	public void addComboBoxAciertos(JComboBox<Integer> comboBoxAciertos) {
+		
+		for (int i = 0; i <= ExamenTest.NUM_PREGUNTAS; i++) {
+			comboBoxAciertos.addItem(i);
+		}
+	}
+	
+	public void addComboBoxFallos(JComboBox<Integer> comboBoxFallos) {
+		for (int i = 0; i <= ExamenTest.NUM_PREGUNTAS; i++) {
+			comboBoxFallos.addItem(i);
+		}
+	}
+	
+	public void addComboBoxRetraso(JComboBox<Integer> comboBoxretraso) {
+		for (int i = 0; i <= 30; i++) {
+			comboBoxretraso.addItem(i);
 		}
 	}
 

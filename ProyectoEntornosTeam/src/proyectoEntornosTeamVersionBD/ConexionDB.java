@@ -68,7 +68,7 @@ public class ConexionDB {
 		statement.execute("delete from alumno where NIA = \"" + al.getNia() + "\"");
 	}
 	
-	public void anyadirExamenClasico (String nia, double porcentaje, String descripcion, int nota) throws SQLException {
+	public void anyadirExamenClasico (String nia, double porcentaje, String descripcion, double nota) throws SQLException {
 		statement.execute("insert into ExamenClasico values (\"" + porcentaje + "\",\"" + descripcion + "\",\"" + nota + "\",\"" + nia + "\")");
 	}
 	public void anyadirExamenClasico (Alumno al, ExamenClasico ec) throws SQLException, SinPorcentajeExcepcion {

@@ -15,7 +15,7 @@ public class ExamenTest extends Examen{
 	 * El número total de preguntas del test
 	 * 
 	 */
-	private static final int NUM_PREGUNTAS = 30;
+	static final int NUM_PREGUNTAS = 30;
 	
 	/**
 	 * Constante VALOR_PREGUNTA

@@ -19,7 +19,7 @@ create table alumno (
 create table ExamenClasico (
 	porcentaje double,
     descripcion varchar(200),
-    nota int,
+    nota double,
     NIA varchar(8),
     foreign key (NIA) references alumno(NIA),
     constraint pk_exClasico_desc_NIA primary key(descripcion, NIA)
