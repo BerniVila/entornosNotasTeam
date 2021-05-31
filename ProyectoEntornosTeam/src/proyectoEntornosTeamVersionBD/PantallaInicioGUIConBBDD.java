@@ -630,7 +630,7 @@ public class PantallaInicioGUIConBBDD {
 			btnCrearAlumno.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						conexion.leerBD();
+						grupos = conexion.leerBD();
 						int lastNIA = 0;
 
 						for (Grupo grupo : grupos) {
@@ -787,6 +787,15 @@ public class PantallaInicioGUIConBBDD {
 
 			btnCalcularNota.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					
+					try {
+						grupos = conexion.leerBD();
+					} catch (Exception e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					
+					
 					if (txtNia.getText().isEmpty() || !Character.isDigit(txtNia.getText().charAt(0))
 							|| Integer.valueOf(txtNia.getText()) < 1
 							|| Integer.valueOf(txtNia.getText()) > comboBoxExamenClasicoNia.getItemCount()) {
@@ -794,14 +803,10 @@ public class PantallaInicioGUIConBBDD {
 						txtAreaNotas.setText(
 								"Ese NIA no existe en nuestra base de datos, prueba otra vez con un NIA valido");
 						txtAreaNotas.setForeground(Color.RED);
+						toggleDetalles.setVisible(false);
 
 					} else {
-						try {
-							conexion.leerBD();
-						} catch (Exception e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
+
 						for (Grupo grupo : grupos) {
 							for (Alumno alumno : grupo.getListaAlumnos()) {
 
@@ -837,7 +842,7 @@ public class PantallaInicioGUIConBBDD {
 						for (Grupo grupo : grupos) {
 							for (Alumno alumno : grupo.getListaAlumnos()) {
 								try {
-									conexion.leerBD();
+									grupos = conexion.leerBD();
 								} catch (Exception e2) {
 									// TODO Auto-generated catch block
 									e2.printStackTrace();
@@ -862,6 +867,7 @@ public class PantallaInicioGUIConBBDD {
 					} else {
 						for (Grupo grupo : grupos) {
 							for (Alumno alumno : grupo.getListaAlumnos()) {
+
 
 								if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
 									try {
