@@ -630,7 +630,6 @@ public class PantallaInicioGUIConBBDD {
 			btnCrearAlumno.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						grupos = conexion.leerBD();
 						int lastNIA = 0;
 
 						for (Grupo grupo : grupos) {
@@ -766,11 +765,11 @@ public class PantallaInicioGUIConBBDD {
 					try {
 						conexion.crearGrupo(textNombreGrupo.getText());
 						comboBoxGrupo.addItem(textNombreGrupo.getText());
-						conexion.leerBD();
 
 						JFrame frame = new JFrame();
-						JOptionPane.showMessageDialog(frame, "Grupo " + textNombreGrupo.getText() + " creado con éxito",
-								"Greeting", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(frame,
+								"Grupo " + textNombreGrupo.getText() + " creado con éxito", "Greeting",
+								JOptionPane.INFORMATION_MESSAGE);
 
 						textNombreGrupo.setText("");
 					} catch (SQLException e1) {
@@ -783,19 +782,16 @@ public class PantallaInicioGUIConBBDD {
 				}
 			});
 
-
-
 			btnCalcularNota.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+
 					try {
 						grupos = conexion.leerBD();
 					} catch (Exception e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					}
-					
-					
+
 					if (txtNia.getText().isEmpty() || !Character.isDigit(txtNia.getText().charAt(0))
 							|| Integer.valueOf(txtNia.getText()) < 1
 							|| Integer.valueOf(txtNia.getText()) > comboBoxExamenClasicoNia.getItemCount()) {
@@ -833,20 +829,12 @@ public class PantallaInicioGUIConBBDD {
 				}
 			});
 
-
-
 			toggleDetalles.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					int estado = e.getStateChange();
 					if (estado == ItemEvent.SELECTED) {
 						for (Grupo grupo : grupos) {
 							for (Alumno alumno : grupo.getListaAlumnos()) {
-								try {
-									grupos = conexion.leerBD();
-								} catch (Exception e2) {
-									// TODO Auto-generated catch block
-									e2.printStackTrace();
-								}
 
 								if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
 									try {
@@ -867,7 +855,6 @@ public class PantallaInicioGUIConBBDD {
 					} else {
 						for (Grupo grupo : grupos) {
 							for (Alumno alumno : grupo.getListaAlumnos()) {
-
 
 								if (alumno.getNia().compareTo(txtNia.getText().toString()) == 0) {
 									try {
