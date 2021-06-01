@@ -91,7 +91,7 @@ public class PantallaInicioGUIConBBDD {
 			niaRepetidoExcepcion, ClassNotFoundException, SQLException, SinPorcentajeExcepcion {
 		try {
 			conexion = new ConexionDB();
-			// AsignarDatos.main(null); //Solamente en la primer ejecucion para probar la
+			AsignarDatos.main(null); //Solamente en la primer ejecucion para probar la
 			// aplicacion
 			grupos = conexion.leerBD();
 			Grupo daw = grupos.get(0);

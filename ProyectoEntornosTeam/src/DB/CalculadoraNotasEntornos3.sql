@@ -44,11 +44,16 @@ create table Trabajo (
 );
 
 SET SQL_SAFE_UPDATES = 0;
+
+
 select * from grupo;
 select * from alumno;
-insert into ExamenClasico values ("0.5","exCl1","10","1");
+
+#insert into ExamenClasico values ("0.5","exCl1","10","1");
+
 select * from ExamenClasico;
 select * from ExamenTest;
-delete from ExamenClasico
-where (descripcion = "exCl1") & (NIA = "1");
+
+#delete from ExamenClasico
+#where (descripcion = "exCl1") & (NIA = "1");
 
