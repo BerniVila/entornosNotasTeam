@@ -51,4 +51,3 @@ select * from ExamenClasico;
 select * from ExamenTest;
 delete from ExamenClasico
 where (descripcion = "exCl1") & (NIA = "1");
-

@@ -712,7 +712,7 @@ public class PantallaInicioGUIConBBDD {
 
 							JFrame frame = new JFrame();
 							JOptionPane.showMessageDialog(
-									frame, "Los aciertos y los fallos no pueden sumar más de "
+									frame, "Los aciertos y los fallos no pueden sumar mas de "
 											+ ExamenTest.NUM_PREGUNTAS + " en total.",
 									"Error", JOptionPane.ERROR_MESSAGE);
 
@@ -768,7 +768,7 @@ public class PantallaInicioGUIConBBDD {
 
 						JFrame frame = new JFrame();
 						JOptionPane.showMessageDialog(frame,
-								"Grupo " + textNombreGrupo.getText() + " creado con éxito", "Greeting",
+								"Grupo " + textNombreGrupo.getText() + " creado con exito", "Greeting",
 								JOptionPane.INFORMATION_MESSAGE);
 
 						textNombreGrupo.setText("");
